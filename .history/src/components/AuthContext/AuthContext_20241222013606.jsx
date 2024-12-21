@@ -1,0 +1,47 @@
+// import { createContext, useContext, useState, useEffect } from 'react';
+
+// const AuthContext = createContext();
+
+// export const AuthProvider = ({ children }) => {
+//   const [user, setUser] = useState(null); // User state
+//   const [loading, setLoading] = useState(true); // Loading state
+
+//   const login = async (email, password) => {
+//     const response = await fetch('https://crowdfunding-store-server.vercel.app/login', {
+//       method: 'POST',
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify({ email, password }),
+//     });
+//     const data = await response.json();
+
+//     if (data.user) {
+//       setUser(data.user); // Set user when login successful
+//       setLoading(false);
+//     }
+//   };
+
+//   const logout = () => {
+//     setUser(null); // Remove user from state
+//   };
+
+//   // Check user session
+//   useEffect(() => {
+//     fetch('https://crowdfunding-store-server.vercel.app/check-session')
+//       .then(res => res.json())
+//       .then(data => {
+//         setUser(data.user); // Set user state if logged in
+//         setLoading(false); // Stop loading
+//       });
+//   }, []);
+
+//   const value = {
+//     user,
+//     login,
+//     logout,
+//     loading,
+//   };
+
+//   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+// };
+
+// export default AuthContext;

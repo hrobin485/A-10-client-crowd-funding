@@ -31,7 +31,7 @@ const CampaignForm = () => {
     console.log(newCampaign);
 
     // send data to server
-    fetch('http://localhost:5000/campaign')
+    fetch('https://crowdfunding-store-server.vercel.app/campaign')
     .then(res=>res.json())
     .then (data=>{
       console.log(data)

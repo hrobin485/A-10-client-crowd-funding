@@ -10,7 +10,7 @@ const CampaignDetail = () => {
   useEffect(() => {
     // Fetch the campaign details
     axios
-      .get(`http://localhost:5000/campaign/${id}`)
+      .get(`https://crowdfunding-store-server.vercel.app/campaign/${id}`)
       .then((response) => setCampaign(response.data))
       .catch((error) => console.error("Error fetching campaign details:", error));
   }, [id]);
@@ -30,7 +30,7 @@ const CampaignDetail = () => {
     };
 
     axios
-      .post("http://localhost:5000/donations", donation)
+      .post("https://crowdfunding-store-server.vercel.app/donations", donation)
       .then((response) => {
         alert("Donation successful!");
       })

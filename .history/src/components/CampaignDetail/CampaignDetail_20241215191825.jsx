@@ -12,7 +12,7 @@ const CampaignDetail = () => {
   useEffect(() => {
     const fetchCampaign = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/campaigns/${id}`); // Replace with your API URL
+        const response = await axios.get(`https://crowdfunding-store-server.vercel.app/campaigns/${id}`); // Replace with your API URL
         setCampaign(response.data);
         setLoading(false);
       } catch (err) {
