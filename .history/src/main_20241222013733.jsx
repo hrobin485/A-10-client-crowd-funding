@@ -37,7 +37,7 @@ const router = createBrowserRouter([
             <Home />
           </>
         ),
-        loader:() => fetch('http://localhost:5000/campaign')
+        loader:() => fetch('https://crowdfunding-store-server.vercel.app/campaign')
       },
       {
         path: "/AllCampaign",
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
             <AllCampaign />
           </>
         ),
-        loader: () => fetch('http://localhost:5000/campaign')
+        loader: () => fetch('https://crowdfunding-store-server.vercel.app/campaign')
       },
       
       {

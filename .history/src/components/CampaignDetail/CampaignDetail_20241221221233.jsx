@@ -8,7 +8,7 @@ const CampaignDetail = () => {
   useEffect(() => {
     const fetchCampaign = async () => {
       try {
-        const response = await fetch(`('http://localhost:5000/campaign')/${id}`);
+        const response = await fetch(`('https://crowdfunding-store-server.vercel.app/campaign')/${id}`);
         const data = await response.json();
         setCampaign(data);
       } catch (error) {

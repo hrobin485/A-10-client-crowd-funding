@@ -1,0 +1,12 @@
+/* Banner styles for light mode */
+.banner {
+    background-color: white; /* Light mode background */
+    color: black; /* Light mode text color */
+  }
+  
+  /* Dark mode styles */
+  body.dark-mode .banner {
+    background-color: black; /* Dark mode background */
+    color: white; /* Dark mode text color */
+  }
+  

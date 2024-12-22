@@ -1,0 +1,12 @@
+/* Light mode styles for HowItWorks */
+.how-it-works {
+    background-color: white; /* Light mode background */
+    color: black; /* Light mode text color */
+  }
+  
+  /* Dark mode styles for HowItWorks */
+  body.dark-mode .how-it-works {
+    background-color: black; /* Dark mode background */
+    color: white; /* Dark mode text color */
+  }
+  

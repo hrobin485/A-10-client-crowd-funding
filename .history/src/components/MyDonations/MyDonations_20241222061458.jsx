@@ -10,7 +10,7 @@ const MyDonations = () => {
   useEffect(() => {
     const fetchDonatedCampaigns = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/donated?userEmail=${userEmail}`);
+        const response = await fetch(`https://crowdfunding-store-server.vercel.app/donated?userEmail=${userEmail}`);
         const data = await response.json();
         setDonatedCampaigns(data); // Set the data to state
       } catch (error) {

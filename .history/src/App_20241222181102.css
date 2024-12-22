@@ -1,0 +1,18 @@
+/* Default Light Theme */
+:root {
+  --bg-color: #ffffff; /* Light background */
+  --text-color: #000000; /* Light text */
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-color: #121212; /* Dark background */
+  --text-color: #ffffff; /* Dark text */
+}
+
+/* Apply theme variables to the body */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}

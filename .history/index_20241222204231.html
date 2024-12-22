@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml"
+    href="https://img.freepik.com/free-photo/business-crowdfunding_53876-105720.jpg?t=st=1734202774~exp=1734206374~hmac=e8d14a30e8d5f1f7913df2178ae536d915d805653164cf330b1cb670e820c6f4&w=740" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crowd Funding </title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  
+  <style>
+    /* Base CSS for Light Mode */
+    body.light {
+      background-color: white; /* Light mode background */
+      color: black; /* Light mode text */
+    }
+
+    /* Dark Mode Styling */
+    body.dark {
+      background-color: #1a202c; /* Dark mode background */
+      color: white; /* Dark mode text */
+    }
+
+    /* Components dark mode specific styles */
+    .banner {
+      @apply bg-white text-black; /* Light mode background and text */
+    }
+
+    body.dark .banner {
+      @apply bg-black text-white; /* Dark mode background and text */
+    }
+
+    .running-campaign {
+      @apply bg-white text-black; /* Light mode background and text */
+    }
+
+    body.dark .running-campaign {
+      @apply bg-black text-white; /* Dark mode background and text */
+    }
+
+    .how-it-works {
+      @apply bg-white text-black; /* Light mode background and text */
+    }
+
+    body.dark .how-it-works {
+      @apply bg-black text-white; /* Dark mode background and text */
+    }
+
+    .testimonials {
+      @apply bg-white text-black; /* Light mode background and text */
+    }
+
+    body.dark .testimonials {
+      @apply bg-black text-white; /* Dark mode background and text */
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/login', {
+      const response = await fetch('https://crowdfunding-store-server.vercel.app/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
     } else {
       const checkSession = async () => {
         try {
-          const response = await fetch('http://localhost:5000/check-session');
+          const response = await fetch('https://crowdfunding-store-server.vercel.app/check-session');
           const data = await response.json();
 
           if (response.ok) {

@@ -57,7 +57,7 @@ const Register = () => {
       await updateUserProfile(user, { displayName: name, photoURL });
 
       // Send user data to the server
-      const response = await fetch("http://localhost:5000/register-firebase", {
+      const response = await fetch("https://crowdfunding-store-server.vercel.app/register-firebase", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

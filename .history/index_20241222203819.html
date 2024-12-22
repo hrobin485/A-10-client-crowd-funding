@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml"
+    href="https://img.freepik.com/free-photo/business-crowdfunding_53876-105720.jpg?t=st=1734202774~exp=1734206374~hmac=e8d14a30e8d5f1f7913df2178ae536d915d805653164cf330b1cb670e820c6f4&w=740" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crowd Funding</title>
+  <style>
+    /* Base CSS for Light Mode */
+    body.light {
+      background-color: white; /* Light mode background */
+      color: black; /* Light mode text */
+    }
+  
+    /* Dark Mode Styling */
+    body.dark {
+      background-color: black; /* Keep overall background white */
+      color: white; /* Dark mode text */
+    }
+  
+    /* Components dark mode specific styles */
+    .banner {
+      background-color: white; /* Light mode background */
+      color: black; /* Light mode text */
+    }
+  
+    body.dark .banner {
+      background-color: black; /* Dark mode background */
+      color: white; /* Dark mode text */
+    }
+  
+    .running-campaign {
+      background-color: white; /* Light mode background */
+      color: black; /* Light mode text */
+    }
+  
+    body.dark .running-campaign {
+      background-color: black; /* Dark mode background */
+      color: white; /* Dark mode text */
+    }
+  
+    .how-it-works {
+      background-color: white; /* Light mode background */
+      color: black; /* Light mode text */
+    }
+  
+    body.dark .how-it-works {
+      background-color: black; /* Dark mode background */
+      color: white; /* Dark mode text */
+    }
+  
+    .testimonials {
+      background-color: white; /* Light mode background */
+      color: black; /* Light mode text */
+    }
+  
+    body.dark .testimonials {
+      background-color: black; /* Dark mode background */
+      color: white; /* Dark mode text */
+    }
+  </style>
+  
+  
+  <script>
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+
+    // Toggle Theme Function
+    const toggleTheme = () => {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const newTheme = currentTheme === "light" ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme); // Save to localStorage
+    };
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <div class="flex justify-end mt-3">
+    <button onClick="toggleTheme()" className="bg-red-500 text-black">
+      Dark Mode
+    </button>
+  </div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

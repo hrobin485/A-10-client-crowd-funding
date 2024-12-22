@@ -1,0 +1,43 @@
+/* Default light theme */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --card-bg: #f9f9f9;
+  --button-bg: #007bff;
+  --button-hover-bg: #0056b3;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --card-bg: #1e1e1e;
+  --button-bg: #1a73e8;
+  --button-hover-bg: #1348a3;
+}
+
+/* Apply theme variables */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Example styling for cards */
+.card {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Buttons */
+button {
+  background-color: var(--button-bg);
+  color: #fff;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: var(--button-hover-bg);
+}
