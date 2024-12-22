@@ -1,15 +1,11 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const CampaignDetail = () => {
-  const { id } = useParams();
-  const [campaign, setCampaign] = useState(null);
 
-  // Simulating logged-in user (You can replace this with actual auth logic)
-  const loggedInUser = {
-    email: "testuser@example.com",
-    name: "Test User",
-  };
+const CampaignDetail = () => {
+  const { id } = useParams(); // Get campaign ID from URL
+  const [campaign, setCampaign] = useState(null);
+  const [loggedInUser, setLoggedInUser] = useState(null);
 
   useEffect(() => {
     const fetchCampaign = async () => {
@@ -22,7 +18,17 @@ const CampaignDetail = () => {
       }
     };
 
-    fetchCampaign();
+    // Check if user is authenticated using Firebase
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        setLoggedInUser({
+          email: user.email,
+          name: user.displayName || user.email.split("@")[0], // Get user's display name or email as fallback
+        });
+      }
+    });
+
+    return () => unsubscribe(); // Cleanup on unmount
   }, [id]);
 
   const handleDonate = async () => {
@@ -49,7 +55,8 @@ const CampaignDetail = () => {
       if (response.ok) {
         alert("Donation successful!");
       } else {
-        alert("Failed to donate. Please try again.");
+        const errorData = await response.json();
+        alert(`Failed to donate: ${errorData.error}`);
       }
     } catch (error) {
       console.error("Error during donation:", error);
@@ -64,7 +71,7 @@ const CampaignDetail = () => {
     );
   }
 
-  const { title, description, type, deadline, userName, minDonation, image, userEmail } = campaign;
+  const { title, description, type, deadline, userName, minDonation, image } = campaign;
 
   return (
     <div className="container mx-auto p-6 max-w-4xl">
@@ -95,10 +102,6 @@ const CampaignDetail = () => {
           <div>
             <p className="text-lg font-semibold text-gray-600">Posted By:</p>
             <p className="text-lg text-gray-800">{userName}</p>
-          </div>
-          <div>
-            <p className="text-lg font-semibold text-gray-600">Email:</p>
-            <p className="text-lg text-gray-800">{userEmail}</p>
           </div>
         </div>
         <div>

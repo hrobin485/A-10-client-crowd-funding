@@ -2,14 +2,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const CampaignDetail = () => {
-  const { id } = useParams();
+  const { id } = useParams(); 
   const [campaign, setCampaign] = useState(null);
-
-  // Simulating logged-in user (You can replace this with actual auth logic)
-  const loggedInUser = {
-    email: "testuser@example.com",
-    name: "Test User",
-  };
 
   useEffect(() => {
     const fetchCampaign = async () => {
@@ -25,37 +19,6 @@ const CampaignDetail = () => {
     fetchCampaign();
   }, [id]);
 
-  const handleDonate = async () => {
-    if (!campaign || !loggedInUser) {
-      alert("User or campaign details missing!");
-      return;
-    }
-
-    const donationData = {
-      campaignId: id,
-      campaignName: campaign.title,
-      userEmail: loggedInUser.email,
-      userName: loggedInUser.name,
-      donatedAt: new Date(),
-    };
-
-    try {
-      const response = await fetch("http://localhost:5000/donate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(donationData),
-      });
-
-      if (response.ok) {
-        alert("Donation successful!");
-      } else {
-        alert("Failed to donate. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error during donation:", error);
-    }
-  };
-
   if (!campaign) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -64,7 +27,7 @@ const CampaignDetail = () => {
     );
   }
 
-  const { title, description, type, deadline, userName, minDonation, image, userEmail } = campaign;
+  const { title, description, type, deadline, userName, minDonation, image,email } = campaign;
 
   return (
     <div className="container mx-auto p-6 max-w-4xl">
@@ -98,17 +61,14 @@ const CampaignDetail = () => {
           </div>
           <div>
             <p className="text-lg font-semibold text-gray-600">Email:</p>
-            <p className="text-lg text-gray-800">{userEmail}</p>
+            <p className="text-lg text-gray-800">{email}</p>
           </div>
         </div>
         <div>
           <p className="text-lg font-semibold text-gray-600">Description:</p>
           <p className="text-lg text-gray-800">{description}</p>
         </div>
-        <button
-          onClick={handleDonate}
-          className="w-full mt-6 bg-blue-500 text-white font-bold py-2 px-4 rounded"
-        >
+        <button className="w-full mt-6 bg-blue-500 text-white font-bold py-2 px-4 rounded ">
           Donate
         </button>
       </div>

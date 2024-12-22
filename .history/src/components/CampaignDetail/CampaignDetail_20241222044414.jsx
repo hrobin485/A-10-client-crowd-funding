@@ -7,8 +7,8 @@ const CampaignDetail = () => {
 
   // Simulating logged-in user (You can replace this with actual auth logic)
   const loggedInUser = {
-    email: "testuser@example.com",
-    name: "Test User",
+    email: `${userEmail}`,
+    name: `${userName}`,
   };
 
   useEffect(() => {

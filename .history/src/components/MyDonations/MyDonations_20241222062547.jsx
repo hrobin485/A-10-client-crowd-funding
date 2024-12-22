@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { auth } from "../../Firebase/auth"; // Import Firebase auth
+import { auth } from "../Firebase/firebase"; // Import Firebase auth
 import { useParams } from "react-router-dom";
 
 const MyDonations = () => {
@@ -50,4 +50,4 @@ const MyDonations = () => {
   );
 };
 
-export default MyDonations;
+export default DonatedCampaigns;

@@ -34,8 +34,8 @@ const CampaignDetail = () => {
     const donationData = {
       campaignId: id,
       campaignName: campaign.title,
-      userEmail: loggedInUser.email,
-      userName: loggedInUser.name,
+      userEmail: userEmail,
+      userName: userName,
       donatedAt: new Date(),
     };
 

@@ -5,7 +5,7 @@ const CampaignDetail = () => {
   const { id } = useParams();
   const [campaign, setCampaign] = useState(null);
 
-  // Simulating logged-in user (You can replace this with actual auth logic)
+  // Simulating logged-in user (replace this with actual auth logic)
   const loggedInUser = {
     email: "testuser@example.com",
     name: "Test User",
