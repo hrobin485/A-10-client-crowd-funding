@@ -5,8 +5,7 @@ import Banner from "../Banner/Banner";
 import HowItWorks from "../HowItWork/HowItWork"; 
 import Testimonials from "../Testimonials/Testimonials"; 
 import RunningCampaign from "../RunningCampaign/RunningCampaign"; 
-import { Typewriter } from "react-simple-typewriter";
-
+import Typewriter from 'react-simple-typewriter';
 
 const Home = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light"); // Retrieve theme from localStorage or default to light

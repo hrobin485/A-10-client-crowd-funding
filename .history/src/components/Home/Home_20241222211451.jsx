@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import AOS from "aos"; 
 import "aos/dist/aos.css"; 
+import Lottie from 'lottie-react';
+import animationData from './path-to-your-animation.json';
 import Banner from "../Banner/Banner";
 import HowItWorks from "../HowItWork/HowItWork"; 
 import Testimonials from "../Testimonials/Testimonials"; 
 import RunningCampaign from "../RunningCampaign/RunningCampaign"; 
-import { Typewriter } from "react-simple-typewriter";
-
 
 const Home = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light"); // Retrieve theme from localStorage or default to light
@@ -27,17 +27,9 @@ const Home = () => {
 
   return (
     <div>
-         <div className="text-center">
-        <h1 className="text-2xl font-bold">Welcome to Crowd Funding</h1>
-        <p className="mt-4">
-          <Typewriter
-            words={['Fundraising made easy.', 'Join our community.', 'Support your dreams.']}
-            loop={0}
-            cursor
-          />
-        </p>
+        <div className="flex justify-center mt-5">
+        <Lottie animationData={animationData} loop={true} style={{ width: 300, height: 300 }} />
       </div>
-
 
 
       <div className="flex justify-end mt-3">

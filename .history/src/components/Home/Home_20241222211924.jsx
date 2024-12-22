@@ -5,8 +5,7 @@ import Banner from "../Banner/Banner";
 import HowItWorks from "../HowItWork/HowItWork"; 
 import Testimonials from "../Testimonials/Testimonials"; 
 import RunningCampaign from "../RunningCampaign/RunningCampaign"; 
-import { Typewriter } from "react-simple-typewriter";
-
+import Typewriter from 'react-simple-typewriter';
 
 const Home = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light"); // Retrieve theme from localStorage or default to light
@@ -26,8 +25,9 @@ const Home = () => {
   };
 
   return (
-    <div>
-         <div className="text-center">
+    
+       <div className="flex justify-center items-center h-screen">
+      <div className="text-center">
         <h1 className="text-2xl font-bold">Welcome to Crowd Funding</h1>
         <p className="mt-4">
           <Typewriter
