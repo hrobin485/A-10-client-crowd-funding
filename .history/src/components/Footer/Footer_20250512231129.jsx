@@ -8,8 +8,7 @@ const Footer = () => {
           <h1 className="text-2xl font-bold">Crowd Funding</h1>
           <p>Crowdfunding involves raising small amounts of money from a large number of individuals to finance a new business venture. </p>
           </div>
-                <div className="border-t border-gray-200 dark:border-gray-700 my-6" />
-
+          <div className="divider mx-20 mt-6 dark:gray-100"></div>
        <div className="footer text-base-content p-10 dark:text-gray-100">
        <nav>
        <p><strong>Contact Us:</strong></p>

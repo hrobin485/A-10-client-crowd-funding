@@ -5,45 +5,27 @@ import { useState, useEffect } from "react";
 import { HiMoon, HiSun } from "react-icons/hi";
 
 const Navbar = () => {
-  const [user, setUser] = useState(null);
-  const [darkMode, setDarkMode] = useState(() => localStorage.getItem("theme") === "dark");
-  const navigate = useNavigate();
+    const { user, signOutUser } = useContext(AuthContext);
+    const [darkMode, setDarkMode] = useState(false);
 
-  // ✅ Apply saved theme on first load
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, []);
+    const handleSignOut = () => {
+        signOutUser()
+            .then(() => {
+                console.log('successful sign out');
+            })
+            .catch(error => {
+                console.log('failed to sign out. stay here. don\'t leave me alone');
+            });
+    };
 
-  // Observe auth state
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((authUser) => {
-      setUser(authUser || null);
-    });
-    return () => unsubscribe();
-  }, []);
-
-  const toggleTheme = () => {
-    const newDarkMode = !darkMode;
-    setDarkMode(newDarkMode);
-    if (newDarkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  };
-
-  const handleSignOut = async () => {
-    await signOut(auth);
-    navigate("/");
-  };
-
+    const toggleTheme = () => {
+        setDarkMode(!darkMode);
+        if (!darkMode) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    };
   const navLinks = (
     <>
       <li>
@@ -109,10 +91,7 @@ const Navbar = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
             </svg>
           </button>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-700 dark:bg-gray-900 rounded-box w-52 text-white"
-          >
+          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-700 dark:bg-gray-900 rounded-box w-52 text-white">
             {navLinks}
           </ul>
         </div>

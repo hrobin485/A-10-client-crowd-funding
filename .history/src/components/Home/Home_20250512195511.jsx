@@ -30,15 +30,15 @@ const Home = () => {
         <Banner />
       </div>
 
-      <div className="banner dark:bg-gray-800 dark:text-gray-100">
+      <div className="banner">
         <RunningCampaign />
       </div>
 
-      <div data-aos="fade-left" className="banner dark:bg-gray-800 dark:text-gray-100">
+      <div data-aos="fade-left" className="banner">
         <HowItWorks />
       </div>
 
-      <div data-aos="fade-up" className="banner dark:bg-gray-800 dark:text-gray-100">
+      <div data-aos="fade-up" className="banner">
         <Testimonials />
       </div>
     </div>

@@ -13,7 +13,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="dark:bg-gray-800 dark:text-gray-100">
+    <div>
       <div className="text-center">
         <h1 className="text-2xl font-bold">Welcome to Crowd Funding</h1>
         <p className="mt-4">
@@ -30,15 +30,15 @@ const Home = () => {
         <Banner />
       </div>
 
-      <div className="banner dark:bg-gray-800 dark:text-gray-100">
+      <div className="banner">
         <RunningCampaign />
       </div>
 
-      <div data-aos="fade-left" className="banner dark:bg-gray-800 dark:text-gray-100">
+      <div data-aos="fade-left" className="banner">
         <HowItWorks />
       </div>
 
-      <div data-aos="fade-up" className="banner dark:bg-gray-800 dark:text-gray-100">
+      <div data-aos="fade-up" className="banner">
         <Testimonials />
       </div>
     </div>

@@ -21,7 +21,7 @@ const Testimonials = () => {
         <h2 className="text-2xl font-bold text-center mb-6">What Our Supporters Say</h2>
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 ">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg p-6 flex items-center dark:bg-gray-700 dark:text-gray-100">
+            <div key={index} className="bg-white rounded-lg shadow-lg p-6 flex items-center  dark:text-gray-100">
               <img src={testimonial.image} alt={testimonial.name} className="w-16 h-16 rounded-full mr-4" />
               <div>
                 <p className="text-gray-600 mb-2 dark:text-gray-100">"{testimonial.quote}"</p>

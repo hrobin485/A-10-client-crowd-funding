@@ -3,14 +3,13 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
     return (
-        <footer className=" bg-white pt-10 dark:bg-gray-800 dark:text-gray-100" >
+        <footer className=" bg-white pt-10 " >
           <div className="text-center ">
           <h1 className="text-2xl font-bold">Crowd Funding</h1>
           <p>Crowdfunding involves raising small amounts of money from a large number of individuals to finance a new business venture. </p>
           </div>
-                <div className="border-t border-gray-200 dark:border-gray-700 my-6" />
-
-       <div className="footer text-base-content p-10 dark:text-gray-100">
+          <div className="divider mx-20 mt-6"></div>
+       <div className="footer text-base-content p-10">
        <nav>
        <p><strong>Contact Us:</strong></p>
       <p>Email: info@CrowdFunding.org</p>
