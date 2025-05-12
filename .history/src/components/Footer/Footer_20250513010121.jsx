@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Brand Section */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-2">Crowd Funding</h1>
+          <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-2">Study Hive</h1>
           <p className="text-gray-600 dark:text-gray-300">
             Crowdfunding involves raising small amounts of money from a large number of individuals to finance a new business venture.
           </p>
@@ -20,7 +20,7 @@ const Footer = () => {
           {/* Contact Info */}
           <div>
             <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Contact Us</h3>
-            <p>Email: info@crowdfunding.org</p>
+            <p>Email: info@studyhive.org</p>
             <p>Phone: +1 234 567 890</p>
             <p>Address: 123 Warm Hearts Lane, Winterville, USA</p>
           </div>

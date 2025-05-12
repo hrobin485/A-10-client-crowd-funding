@@ -18,7 +18,7 @@ const RunningCampaign = () => {
             <CampaignCard key={campaign._id} campaign={campaign} />
           ))
         ) : (
-          <p className="text-center text-gray-500 col-span-full dark:text-gray-100">
+          <p className="text-center text-gray-500 col-span-full">
             No expired campaigns available at the moment.
           </p>
         )}

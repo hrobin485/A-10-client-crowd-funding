@@ -29,7 +29,7 @@ const slides = [
 
 const Banner = () => {
   return (
-    <div className="carousel w-full rounded-b-xl overflow-hidden">
+    <div className="carousel w-full mt-6 rounded-xl overflow-hidden">
       {slides.map((slide, index) => {
         const next = slides[(index + 1) % slides.length].id;
         const prev = slides[(index - 1 + slides.length) % slides.length].id;

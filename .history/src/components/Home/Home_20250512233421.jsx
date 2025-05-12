@@ -6,7 +6,6 @@ import HowItWorks from "../HowItWork/HowItWork";
 import Testimonials from "../Testimonials/Testimonials"; 
 import RunningCampaign from "../RunningCampaign/RunningCampaign"; 
 import { Typewriter } from "react-simple-typewriter";
-import WelcomeSection from "../WelcomeSection/WelcomeSection";
 
 const Home = () => {
   useEffect(() => {
@@ -14,25 +13,32 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="rounded-xl ">
-      <div>
-        <WelcomeSection></WelcomeSection>
+    <div className="dark:bg-gray-800 dark:text-gray-100">
+      <div className="text-center mt-5 rounded-xl">
+        <h1 className="text-2xl font-bold">Welcome to Crowd Funding</h1>
+        <p className="mt-4">
+          <Typewriter
+            words={['Fundraising made easy.', 'Join our community.', 'Support your dreams.']}
+            loop={0}
+            cursor
+          />
+        </p>
       </div>
 
       {/* Adding animations using data-aos attributes */}
-      <div data-aos="fade-down" className="banner mb-5">
+      <div data-aos="fade-down" className="banner">
         <Banner />
       </div>
 
-      <div className="banner">
+      <div className="banner dark:bg-gray-800 dark:text-gray-100">
         <RunningCampaign />
       </div>
 
-      <div data-aos="fade-left" className="banner ">
+      <div data-aos="fade-left" className="banner dark:bg-gray-800 dark:text-gray-100">
         <HowItWorks />
       </div>
 
-      <div data-aos="fade-up" className="banner">
+      <div data-aos="fade-up" className="banner dark:bg-gray-800 dark:text-gray-100">
         <Testimonials />
       </div>
     </div>

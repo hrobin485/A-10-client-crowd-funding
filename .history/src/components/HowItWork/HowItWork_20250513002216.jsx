@@ -28,7 +28,7 @@ const HowItWorks = () => {
   return (
     <section
       id="how-it-works"
-      className="py-20 px-4 mb-10 mt-5 rounded-xl bg-gradient-to-b from-gray-100 to-white dark:from-gray-900 dark:to-gray-800 transition-colors"
+      className="py-20 px-4 mb-10 rounded-xl bg-gradient-to-b from-gray-100 to-white dark:from-gray-900 dark:to-gray-800 transition-colors"
     >
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-extrabold text-center mb-12 text-gray-900 dark:text-white">

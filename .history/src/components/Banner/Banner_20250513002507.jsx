@@ -29,7 +29,7 @@ const slides = [
 
 const Banner = () => {
   return (
-    <div className="carousel w-full rounded-b-xl overflow-hidden">
+    <div className="carousel w-full mt-6 rounded-xl overflow-hidden">
       {slides.map((slide, index) => {
         const next = slides[(index + 1) % slides.length].id;
         const prev = slides[(index - 1 + slides.length) % slides.length].id;
@@ -40,15 +40,14 @@ const Banner = () => {
               className="w-full object-cover h-full"
               alt="Banner Slide"
             />
-
-            {/* Overlay Content with Get Started Button */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center px-4">
-              <div className="bg-black/60 backdrop-blur-sm p-4 rounded-lg text-white w-[90%] max-w-md">
-                <h2 className="text-xl md:text-2xl font-bold mb-2">{slide.title}</h2>
-                <p className="text-sm md:text-base mb-3">{slide.subtitle}</p>
-                <a href="#get-started" className="inline-block bg-blue-500 hover:bg-blue-600 text-white text-sm px-4 py-2 rounded-lg transition duration-300">
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-center px-4">
+              <div className="bg-black/50 backdrop-blur-md p-6 rounded-lg text-white max-w-xl mx-auto">
+                <h2 className="text-3xl md:text-4xl font-extrabold mb-3">{slide.title}</h2>
+                <p className="mb-4 text-sm md:text-base">{slide.subtitle}</p>
+                <button className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full font-semibold text-white transition">
                   Get Started
-                </a>
+                </button>
               </div>
             </div>
 
