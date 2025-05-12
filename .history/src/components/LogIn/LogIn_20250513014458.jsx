@@ -72,7 +72,7 @@ const Login = () => {
       {/* Left side: Login Box */}
       <div className="w-full md:w-1/2 flex justify-center items-center p-6 ">
         <div className="w-full max-w-md bg-white/80 backdrop-blur-lg p-8 rounded-lg shadow-lg z-10 dark:bg-gray-600 dark:text-gray-100">
-          <h1 className="text-3xl font-bold mb-6 text-center text-blue-700 dark:text-gray-100">Login Now</h1>
+          <h1 className="text-3xl font-bold mb-6 text-center text-blue-700">Login Now</h1>
 
           {!user ? (
             <form onSubmit={handleLogin}>
@@ -100,7 +100,7 @@ const Login = () => {
                     id="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300 dark:text-black"
+                    className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
                     placeholder="Enter your password"
                     required
                   />
@@ -144,13 +144,13 @@ const Login = () => {
             <div className="flex justify-between items-center mt-4 text-sm">
               <button
                 onClick={() => navigate("/ForgotPassword")}
-                className="text-blue-600 hover:underline dark:text-gray-100"
+                className="text-blue-600 hover:underline"
               >
                 Forgot Password?
               </button>
               <button
                 onClick={() => navigate("/Register")}
-                className="text-blue-600 hover:underline dark:text-gray-100"
+                className="text-blue-600 hover:underline"
               >
                 Register
               </button>

@@ -72,7 +72,7 @@ const Login = () => {
       {/* Left side: Login Box */}
       <div className="w-full md:w-1/2 flex justify-center items-center p-6 ">
         <div className="w-full max-w-md bg-white/80 backdrop-blur-lg p-8 rounded-lg shadow-lg z-10 dark:bg-gray-600 dark:text-gray-100">
-          <h1 className="text-3xl font-bold mb-6 text-center text-blue-700 dark:text-gray-100">Login Now</h1>
+          <h1 className="text-3xl font-bold mb-6 text-center text-blue-700">Login Now</h1>
 
           {!user ? (
             <form onSubmit={handleLogin}>

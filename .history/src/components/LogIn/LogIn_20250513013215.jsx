@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Lottie from "lottie-react";
-import loginAnimation from "../../assets/lottie/login.json"; 
+import loginAnimation from "../../assets/lottie/login.json"; // ✅ Replace this with your own animation
 
 const Login = () => {
   const navigate = useNavigate();
@@ -68,11 +68,11 @@ const Login = () => {
   };
 
   return (
-    <div className="my-5 rounded-xl min-h-screen flex flex-col md:flex-row items-center justify-center bg-gray-100 overflow-hidden dark:bg-gray-700">
+    <div className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-gray-100 overflow-hidden">
       {/* Left side: Login Box */}
-      <div className="w-full md:w-1/2 flex justify-center items-center p-6 ">
-        <div className="w-full max-w-md bg-white/80 backdrop-blur-lg p-8 rounded-lg shadow-lg z-10 dark:bg-gray-600 dark:text-gray-100">
-          <h1 className="text-3xl font-bold mb-6 text-center text-blue-700 dark:text-gray-100">Login Now</h1>
+      <div className="w-full md:w-1/2 flex justify-center items-center p-6">
+        <div className="w-full max-w-md bg-white/80 backdrop-blur-lg p-8 rounded-lg shadow-lg z-10">
+          <h1 className="text-3xl font-bold mb-6 text-center text-blue-700">Login</h1>
 
           {!user ? (
             <form onSubmit={handleLogin}>
@@ -85,7 +85,7 @@ const Login = () => {
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300 dark:text-black"
+                  className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
                   placeholder="Enter your email"
                   required
                 />
@@ -100,7 +100,7 @@ const Login = () => {
                     id="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300 dark:text-black"
+                    className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
                     placeholder="Enter your password"
                     required
                   />
@@ -144,13 +144,13 @@ const Login = () => {
             <div className="flex justify-between items-center mt-4 text-sm">
               <button
                 onClick={() => navigate("/ForgotPassword")}
-                className="text-blue-600 hover:underline dark:text-gray-100"
+                className="text-blue-600 hover:underline"
               >
                 Forgot Password?
               </button>
               <button
                 onClick={() => navigate("/Register")}
-                className="text-blue-600 hover:underline dark:text-gray-100"
+                className="text-blue-600 hover:underline"
               >
                 Register
               </button>
@@ -172,7 +172,7 @@ const Login = () => {
 
       {/* Right side: Lottie Animation */}
       <div className="w-full md:w-1/2 flex justify-center items-center p-4">
-        <Lottie animationData={loginAnimation} loop autoPlay className="w-3/4 max-w-xl" />
+        <Lottie animationData={loginAnimation} loop autoPlay className="w-full max-w-xl" />
       </div>
     </div>
   );

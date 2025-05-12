@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Lottie from "lottie-react";
-import loginAnimation from "../../assets/lottie/register.json"; 
+import loginAnimation from "../../assets/lottie/login.json"; // Same animation as Login
 
 const Register = () => {
   const navigate = useNavigate();
@@ -152,12 +152,12 @@ const Register = () => {
                 required
               />
               <span
-                className="absolute right-3 top-9 cursor-pointer dark:text-black"
+                className="absolute right-3 top-9 cursor-pointer"
                 onClick={togglePasswordVisibility}
               >
                 {passwordVisible ? <FaEyeSlash /> : <FaEye />}
               </span>
-              <p className="text-sm text-gray-500 mt-1 dark:text-gray-100">Note: Must include uppercase, lowercase, and at least 6 characters.</p>
+              <p className="text-sm text-gray-500 mt-1">Note: Must include uppercase, lowercase, and at least 6 characters.</p>
               {passwordError && <p className="text-red-500 text-sm mt-1">{passwordError}</p>}
             </div>
 
@@ -193,7 +193,7 @@ const Register = () => {
 
       {/* Right side: Lottie Animation */}
       <div className="w-full md:w-1/2 flex justify-center items-center p-4">
-        <Lottie animationData={loginAnimation} loop autoPlay className="w-full max-w-xl" />
+        <Lottie animationData={loginAnimation} loop autoPlay className="w-3/4 max-w-xl" />
       </div>
     </div>
   );

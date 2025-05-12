@@ -152,7 +152,7 @@ const Register = () => {
                 required
               />
               <span
-                className="absolute right-3 top-9 cursor-pointer dark:text-black"
+                className="absolute right-3 top-9 cursor-pointer dark:black"
                 onClick={togglePasswordVisibility}
               >
                 {passwordVisible ? <FaEyeSlash /> : <FaEye />}
