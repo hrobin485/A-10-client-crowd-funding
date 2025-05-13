@@ -21,7 +21,6 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Overview from './components/Overview/Overview';
 import Profile from './components/Profile/Profile';
 import AboutUs from './components/AboutUs/AboutUs';
-import ContactUs from './components/ContactUs/ContactUs';
 
 
 
@@ -62,7 +61,7 @@ const router = createBrowserRouter([
       
      
       {
-        path: 'AboutUs',
+        path: ' AboutUs',
         element: (
           <>
             <Helmet>
@@ -74,14 +73,14 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: 'ContactUs',
+        path: 'MyCampaign',
         element: (
           <>
             <Helmet>
-              <title>Contact Us- Crowd Funding</title>
+              <title>My Campaign- Crowd Funding</title>
               <meta name="description" content="Learn more about us." />
             </Helmet>
-            <ContactUs />
+            <PrivateRoute element={<MyCampaign />} />
           </>
         ),
       },

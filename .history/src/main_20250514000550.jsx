@@ -18,10 +18,6 @@ import { AuthProvider } from './components/AuthContext/AuthContext';
 import LogIn from './components/LogIn/LogIn';
 import UpdateCampaign from './components/UpdateCampaign/UpdateCampaign';
 import Dashboard from './components/Dashboard/Dashboard';
-import Overview from './components/Overview/Overview';
-import Profile from './components/Profile/Profile';
-import AboutUs from './components/AboutUs/AboutUs';
-import ContactUs from './components/ContactUs/ContactUs';
 
 
 
@@ -61,31 +57,42 @@ const router = createBrowserRouter([
 
       
      
-      {
-        path: 'AboutUs',
-        element: (
-          <>
-            <Helmet>
-              <title> About Us - Crowd Funding</title>
-              <meta name="description" content="Your personal dashboard." />
-            </Helmet>
-            < AboutUs />
-          </>
-        ),
-      },
-      {
-        path: 'ContactUs',
-        element: (
-          <>
-            <Helmet>
-              <title>Contact Us- Crowd Funding</title>
-              <meta name="description" content="Learn more about us." />
-            </Helmet>
-            <ContactUs />
-          </>
-        ),
-      },
-      
+      // {
+      //   path: 'AddNewCampaign',
+      //   element: (
+      //     <>
+      //       <Helmet>
+      //         <title>Add New Campaign - Crowd Funding</title>
+      //         <meta name="description" content="Your personal dashboard." />
+      //       </Helmet>
+      //       <PrivateRoute element={<AddNewCampaign />} />
+      //     </>
+      //   ),
+      // },
+      // {
+      //   path: 'MyCampaign',
+      //   element: (
+      //     <>
+      //       <Helmet>
+      //         <title>My Campaign- Crowd Funding</title>
+      //         <meta name="description" content="Learn more about us." />
+      //       </Helmet>
+      //       <PrivateRoute element={<MyCampaign />} />
+      //     </>
+      //   ),
+      // },
+      // {
+      //   path: 'MyDonations',
+      //   element: (
+      //     <>
+      //       <Helmet>
+      //         <title>My Donations- Crowd Funding</title>
+      //         <meta name="description" content="Learn more about us." />
+      //       </Helmet>
+      //       <PrivateRoute element={<MyDonations />} />
+      //     </>
+      //   ),
+      // },
 
       {
         path: '/LogIn',
@@ -150,45 +157,36 @@ const router = createBrowserRouter([
 
 
 
-  {
-  path: '/dashboard',
-  element: (
-    <>
-      <Helmet>
-        <title>Dashboard - Crowd Funding</title>
-        <meta name="description" content="Your personal dashboard." />
-      </Helmet>
-      <Dashboard />
-    </>
-  ),
-  children: [
-    {
-      index: true,
-      element: <Navigate to="overview" replace />,
-    },
-    {
-      path: 'add-new-campaign',
-      element: <PrivateRoute element={<AddNewCampaign />} />,
-    },
-    {
-      path: 'my-campaigns',
-      element: <PrivateRoute element={<MyCampaign />} />,
-    },
-    {
-      path: 'my-donations',
-      element: <PrivateRoute element={<MyDonations />} />,
-    },
-    {
-      path: 'profile',
-      element: <Profile />,
-    },
-    {
-      path: 'overview',
-      element: <Overview />,
-    }
-  ]
-}
-
+   {path: 'Dashboard',
+        element: (
+          <>
+            <Helmet>
+              <title>Dashboard - Crowd Funding</title>
+              <meta name="description" content="Your personal dashboard." />
+            </Helmet>
+            <PrivateRoute element={<Dashboard />} />
+          </>
+        ),
+        children: [
+          {
+            index: true,
+            element: <Navigate to="overview" replace />,
+          },
+          
+          {
+            path: 'add-new-campaign',
+            element: <AddNewCampaign />,
+          },
+          {
+            path: 'my-campaigns',
+            element: <MyCampaign />,
+          },
+          {
+            path: 'my-donations',
+            element: <MyDonations />,
+          },
+        ]
+      }
 
 
     ]

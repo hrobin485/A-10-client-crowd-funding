@@ -72,7 +72,7 @@ const Navbar = () => {
     </li>
     <li>
       <NavLink
-        to="/Dashboard"
+        to="/AllCampaign"
         className={({ isActive }) =>
           isActive
             ? "text-blue-500 dark:text-emerald-400 font-semibold"
@@ -84,29 +84,40 @@ const Navbar = () => {
     </li>
     <li>
       <NavLink
-        to="/AboutUs"
+        to="/AddNewCampaign"
         className={({ isActive }) =>
           isActive
             ? "text-blue-500 dark:text-emerald-400 font-semibold"
             : "hover:text-blue-500 dark:hover:text-emerald-300"
         }
       >
-        About Us
+        Add New Campaign
       </NavLink>
     </li>
     <li>
       <NavLink
-        to="/ContactUs"
+        to="/MyCampaign"
         className={({ isActive }) =>
           isActive
             ? "text-blue-500 dark:text-emerald-400 font-semibold"
             : "hover:text-blue-500 dark:hover:text-emerald-300"
         }
       >
-       Contact Us
+        My Campaign
       </NavLink>
     </li>
-    
+    <li>
+      <NavLink
+        to="/MyDonations"
+        className={({ isActive }) =>
+          isActive
+            ? "text-blue-500 dark:text-emerald-400 font-semibold"
+            : "hover:text-blue-500 dark:hover:text-emerald-300"
+        }
+      >
+        My Donations
+      </NavLink>
+    </li>
   </>
 );
 

@@ -62,7 +62,7 @@ const router = createBrowserRouter([
       
      
       {
-        path: 'AboutUs',
+        path: ' AboutUs',
         element: (
           <>
             <Helmet>

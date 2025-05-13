@@ -84,7 +84,7 @@ const Navbar = () => {
     </li>
     <li>
       <NavLink
-        to="/AboutUs"
+        to="/AddNewCampaign"
         className={({ isActive }) =>
           isActive
             ? "text-blue-500 dark:text-emerald-400 font-semibold"
@@ -96,7 +96,7 @@ const Navbar = () => {
     </li>
     <li>
       <NavLink
-        to="/ContactUs"
+        to="/MyCampaign"
         className={({ isActive }) =>
           isActive
             ? "text-blue-500 dark:text-emerald-400 font-semibold"
