@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Lottie from "lottie-react";
 import loginAnimation from "../../assets/lottie/register.json";
-import Swal from "sweetalert2"; 
+import Swal from "sweetalert2"; // ✅ Import SweetAlert
 
 const Register = () => {
   const navigate = useNavigate();
@@ -39,64 +39,57 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-const handleRegister = async (e) => {
-    e.preventDefault();
-    const { name, email, photoURL, password } = formData;
+  const handleRegister = async (e) => {
+  e.preventDefault();
+  const { name, email, photoURL, password } = formData;
 
-    const validationError = validatePassword(password);
-    if (validationError) {
-      setPasswordError(validationError);
-      return;
-    }
-    setPasswordError("");
-    setLoading(true);
+  const validationError = validatePassword(password);
+  if (validationError) {
+    setPasswordError(validationError);
+    return;
+  }
+  setPasswordError("");
+  setLoading(true);
 
-    try {
-      // Register the user
-      const userCredential = await signUpWithEmailAndPassword(email, password);
-      const user = userCredential.user;
+  try {
+    const userCredential = await signUpWithEmailAndPassword(email, password);
+    const user = userCredential.user;
+    await updateUserProfile(user, { displayName: name, photoURL });
 
-      // Update the user profile with name and photo URL
-      await updateUserProfile(user, { displayName: name, photoURL });
+    const response = await fetch("http://localhost:5000/register-firebase", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL || "",
+      }),
+    });
 
-      // Optionally, send user details to your backend
-      const response = await fetch("http://localhost:5000/register-firebase", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: user.displayName,
-          email: user.email,
-          photoURL: user.photoURL || "",
-        }),
+    const data = await response.json();
+
+    if (response.ok) {
+      // ✅ Show SweetAlert and wait for confirmation
+      Swal.fire({
+        icon: "success",
+        title: "Registration Successful!",
+        text: "Welcome to the platform.",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Go to Home",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/");
+        }
       });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        // Auto login after successful registration
-        await signUpWithEmailAndPassword(email, password);
-
-        // Show SweetAlert for success
-        Swal.fire({
-          icon: "success",
-          title: "Registration Successful!",
-          text: "You are now logged in and ready to explore.",
-          confirmButtonColor: "#3085d6",
-          confirmButtonText: "Go to Home",
-        }).then((result) => {
-          if (result.isConfirmed) {
-            navigate("/"); 
-          }
-        });
-      } else {
-        throw new Error(data.message || "Registration failed.");
-      }
-    } catch (error) {
-      toast.error(error.message || "Something went wrong.");
-    } finally {
-      setLoading(false);
+    } else {
+      throw new Error(data.message || "Registration failed.");
     }
-  };
+  } catch (error) {
+    toast.error(error.message || "Something went wrong.");
+  } finally {
+    setLoading(false);
+  }
+};
 
 
 
@@ -192,9 +185,7 @@ const handleRegister = async (e) => {
               disabled={loading}
             >
               {loading ? "Registering..." : "Register"}
-              
             </button>
-            
           </form>
 
           <div className="text-center mt-4">

@@ -35,9 +35,9 @@ const AllCampaign = () => {
   };
 
   return (
-    <div className="container mx-auto p-6 my-5 rounded-lg dark:bg-gray-700 dark:text-gray-100">
+    <div className="container mx-auto p-6 dark:bg-gray-700 dark:text-gray-100">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">All Campaigns</h1>
+        <h1 className="text-3xl font-bold text-gray-800">All Campaigns</h1>
         <button
           onClick={handleSort}
           className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
@@ -47,7 +47,7 @@ const AllCampaign = () => {
       </div>
       <div className="overflow-x-auto">
         <table className="table-auto w-full border-collapse border border-gray-300">
-          <thead className="bg-gray-200 dark:bg-gray-700">
+          <thead className="bg-gray-200">
             <tr>
               <th className="border border-gray-300 px-4 py-2 text-left">Title</th>
               <th className="border border-gray-300 px-4 py-2 text-left">Type</th>

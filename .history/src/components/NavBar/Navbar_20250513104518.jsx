@@ -44,70 +44,60 @@ const Navbar = () => {
     navigate("/");
   };
 
- const navLinks = (
-  <>
-    <li>
-      <NavLink
-        to="/"
-        className={({ isActive }) =>
-          isActive
-            ? "text-blue-500 dark:text-emerald-400 font-semibold"
-            : "hover:text-blue-500 dark:hover:text-emerald-300"
-        }
-      >
-        Home
-      </NavLink>
-    </li>
-    <li>
-      <NavLink
-        to="/AllCampaign"
-        className={({ isActive }) =>
-          isActive
-            ? "text-blue-500 dark:text-emerald-400 font-semibold"
-            : "hover:text-blue-500 dark:hover:text-emerald-300"
-        }
-      >
-        All Campaign
-      </NavLink>
-    </li>
-    <li>
-      <NavLink
-        to="/AddNewCampaign"
-        className={({ isActive }) =>
-          isActive
-            ? "text-blue-500 dark:text-emerald-400 font-semibold"
-            : "hover:text-blue-500 dark:hover:text-emerald-300"
-        }
-      >
-        Add New Campaign
-      </NavLink>
-    </li>
-    <li>
-      <NavLink
-        to="/MyCampaign"
-        className={({ isActive }) =>
-          isActive
-            ? "text-blue-500 dark:text-emerald-400 font-semibold"
-            : "hover:text-blue-500 dark:hover:text-emerald-300"
-        }
-      >
-        My Campaign
-      </NavLink>
-    </li>
-    <li>
-      <NavLink
-        to="/MyDonations"
-        className={({ isActive }) =>
-          isActive
-            ? "text-blue-500 dark:text-emerald-400 font-semibold"
-            : "hover:text-blue-500 dark:hover:text-emerald-300"
-        }
-      >
-        My Donations
-      </NavLink>
-    </li>
-  </>
-);
+  const navLinks = (
+    <>
+      <li>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `dark:text-gray-100 ${isActive ? "text-blue-600 font-semibold" : "hover:text-blue-500"}`
+          }
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/AllCampaign"
+          className={({ isActive }) =>
+            isActive ? "text-blue-600 font-semibold" : "hover:text-blue-500"
+          }
+        >
+          All Campaign
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/AddNewCampaign"
+          className={({ isActive }) =>
+            isActive ? "text-blue-600 font-semibold" : "hover:text-blue-500"
+          }
+        >
+          Add New Campaign
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/MyCampaign"
+          className={({ isActive }) =>
+            isActive ? "text-blue-600 font-semibold" : "hover:text-blue-500"
+          }
+        >
+          My Campaign
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/MyDonations"
+          className={({ isActive }) =>
+            isActive ? "text-blue-600 font-semibold" : "hover:text-blue-500"
+          }
+        >
+          My Donations
+        </NavLink>
+      </li>
+    </>
+  );
 
   return (
     <div className="navbar backdrop-blur-md bg-slate-300/60 dark:bg-gray-800/60 text-black dark:text-white rounded-lg px-4 sticky top-0 z-50">

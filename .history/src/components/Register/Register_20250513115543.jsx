@@ -85,7 +85,7 @@ const handleRegister = async (e) => {
           confirmButtonText: "Go to Home",
         }).then((result) => {
           if (result.isConfirmed) {
-            navigate("/"); 
+            navigate("/"); // Redirect to the homepage
           }
         });
       } else {

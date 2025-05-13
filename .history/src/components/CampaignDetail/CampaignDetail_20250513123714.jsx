@@ -72,7 +72,7 @@ const CampaignDetail = () => {
 
   if (!campaign) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[200px] dark:text-gray-100">
+      <div className="flex flex-col items-center justify-center min-h-[200px] dark:text-gray-100 dark:bg-gray-700">
         <div className="w-12 h-12 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
         <p className="mt-4 text-lg">Loading campaign details...</p>
       </div>
@@ -86,8 +86,8 @@ const CampaignDetail = () => {
   const isDeadlineOver = campaignDeadline < currentDate;
 
   return (
-    <div className="container mx-auto p-6 max-w-full   my-5 rounded-lg">
-      <div className="bg-white dark:bg-gray-700  rounded-lg shadow-xl p-6 lg:p-10">
+    <div className="container mx-auto p-6 max-w-full bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 dark:bg-gray-700">
+      <div className="bg-white dark:bg-gray-600 rounded-lg shadow-xl p-6 lg:p-10">
         {/* Image section */}
         {image && (
           <img

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
+  auth,
   signUpWithEmailAndPassword,
   updateUserProfile,
   loginWithGoogle,
@@ -39,7 +40,7 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-const handleRegister = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     const { name, email, photoURL, password } = formData;
 
@@ -52,15 +53,11 @@ const handleRegister = async (e) => {
     setLoading(true);
 
     try {
-      // Register the user
       const userCredential = await signUpWithEmailAndPassword(email, password);
       const user = userCredential.user;
-
-      // Update the user profile with name and photo URL
       await updateUserProfile(user, { displayName: name, photoURL });
 
-      // Optionally, send user details to your backend
-      const response = await fetch("http://localhost:5000/register-firebase", {
+      const response = await fetch("https://crowdfunding-store-server.vercel.app/register-firebase", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -71,44 +68,30 @@ const handleRegister = async (e) => {
       });
 
       const data = await response.json();
-
       if (response.ok) {
-        // Auto login after successful registration
-        await signUpWithEmailAndPassword(email, password);
-
-        // Show SweetAlert for success
+        // ✅ SweetAlert2 instead of toast
         Swal.fire({
           icon: "success",
           title: "Registration Successful!",
-          text: "You are now logged in and ready to explore.",
+          text: "Welcome to our platform.",
           confirmButtonColor: "#3085d6",
-          confirmButtonText: "Go to Home",
-        }).then((result) => {
-          if (result.isConfirmed) {
-            navigate("/"); 
-          }
+        }).then(() => {
+          navigate("/Home");
         });
       } else {
         throw new Error(data.message || "Registration failed.");
       }
     } catch (error) {
-      toast.error(error.message || "Something went wrong.");
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }
   };
 
-
-
   const handleGoogleLogin = async () => {
     try {
       await loginWithGoogle();
-      await Swal.fire({
-        icon: "success",
-        title: "Google Login Successful!",
-        text: "Welcome back.",
-        confirmButtonColor: "#3085d6",
-      });
+      toast.success("Google login successful!");
       navigate("/");
     } catch (error) {
       toast.error(error.message || "Google login failed.");
@@ -121,7 +104,7 @@ const handleRegister = async (e) => {
 
   return (
     <div className="my-5 rounded-xl min-h-screen flex flex-col md:flex-row items-center justify-center bg-gray-100 overflow-hidden dark:bg-gray-700">
-      {/* Left: Form */}
+      {/* Left side: Registration Form */}
       <div className="w-full md:w-1/2 flex justify-center items-center p-6">
         <div className="w-full max-w-md bg-white/80 backdrop-blur-lg p-8 rounded-lg shadow-lg z-10 dark:bg-gray-600 dark:text-gray-100">
           <h1 className="text-3xl font-bold mb-6 text-center text-blue-700 dark:text-gray-100">Register Now</h1>
@@ -192,9 +175,7 @@ const handleRegister = async (e) => {
               disabled={loading}
             >
               {loading ? "Registering..." : "Register"}
-              
             </button>
-            
           </form>
 
           <div className="text-center mt-4">
@@ -218,7 +199,7 @@ const handleRegister = async (e) => {
         </div>
       </div>
 
-      {/* Right: Lottie */}
+      {/* Right side: Lottie Animation */}
       <div className="w-full md:w-1/2 flex justify-center items-center p-4">
         <Lottie animationData={loginAnimation} loop autoPlay className="w-full max-w-xl" />
       </div>

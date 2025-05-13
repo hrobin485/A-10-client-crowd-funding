@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { auth } from "../../Firebase/auth"; // Import Firebase auth or your auth system
-import Swal from 'sweetalert2';
 
-  const isDarkMode = () => document.documentElement.classList.contains('dark');
 const CampaignForm = () => {
   const [user, setUser] = useState({ name: "", email: "" });
 
@@ -60,19 +58,13 @@ const CampaignForm = () => {
       .then((data) => {
         console.log(data);
         if (data.insertedId) {
-          Swal.fire({
-            title: 'Submit',
-            text: 'Campaign submitted successfully.',
-            icon: 'success',
-            background: isDarkMode() ? '#1f2937' : '#fff',
-            color: isDarkMode() ? '#f3f4f6' : '#000',
-          });
+          alert("Campaign added successfully!");
         }
       });
   };
 
   return (
-    <div className="max-w-4xl mx-auto mt-10 mb-5 p-6 bg-white rounded-lg shadow-md dark:bg-gray-700">
+    <div className="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-md dark:bg-gray-700">
       <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6 dark:text-gray-100">
         Create a Campaign
       </h2>

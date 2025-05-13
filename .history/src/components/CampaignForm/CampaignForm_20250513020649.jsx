@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { auth } from "../../Firebase/auth"; // Import Firebase auth or your auth system
-import Swal from 'sweetalert2';
 
-  const isDarkMode = () => document.documentElement.classList.contains('dark');
 const CampaignForm = () => {
   const [user, setUser] = useState({ name: "", email: "" });
 
@@ -60,26 +58,20 @@ const CampaignForm = () => {
       .then((data) => {
         console.log(data);
         if (data.insertedId) {
-          Swal.fire({
-            title: 'Submit',
-            text: 'Campaign submitted successfully.',
-            icon: 'success',
-            background: isDarkMode() ? '#1f2937' : '#fff',
-            color: isDarkMode() ? '#f3f4f6' : '#000',
-          });
+          alert("Campaign added successfully!");
         }
       });
   };
 
   return (
-    <div className="max-w-4xl mx-auto mt-10 mb-5 p-6 bg-white rounded-lg shadow-md dark:bg-gray-700">
-      <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6 dark:text-gray-100">
+    <div className="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-md dark:bg-gray-700">
+      <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
         Create a Campaign
       </h2>
       <form onSubmit={handleAddCampaign} className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Image URL */}
         <div>
-          <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-100">
+          <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-2">
             Image URL
           </label>
           <input
@@ -94,7 +86,7 @@ const CampaignForm = () => {
 
         {/* Campaign Title */}
         <div>
-          <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-100">
+          <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
             Campaign Title
           </label>
           <input
@@ -109,7 +101,7 @@ const CampaignForm = () => {
 
         {/* Campaign Type */}
         <div>
-          <label htmlFor="type" className="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-100">
+          <label htmlFor="type" className="block text-sm font-medium text-gray-700 mb-2">
             Campaign Type
           </label>
           <select
@@ -128,7 +120,7 @@ const CampaignForm = () => {
 
         {/* Minimum Donation Amount */}
         <div>
-          <label htmlFor="minDonation" className="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-100">
+          <label htmlFor="minDonation" className="block text-sm font-medium text-gray-700 mb-2">
             Minimum Donation Amount
           </label>
           <input
@@ -143,7 +135,7 @@ const CampaignForm = () => {
 
         {/* Deadline */}
         <div>
-          <label htmlFor="deadline" className="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-100">
+          <label htmlFor="deadline" className="block text-sm font-medium text-gray-700 mb-2">
             Deadline
           </label>
           <input
@@ -157,7 +149,7 @@ const CampaignForm = () => {
 
         {/* User Email */}
         <div>
-          <label htmlFor="userEmail" className="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-100">
+          <label htmlFor="userEmail" className="block text-sm font-medium text-gray-700 mb-2">
             User Email
           </label>
           <input
@@ -172,7 +164,7 @@ const CampaignForm = () => {
 
         {/* User Name */}
         <div>
-          <label htmlFor="userName" className="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-100">
+          <label htmlFor="userName" className="block text-sm font-medium text-gray-700 mb-2">
             User Name
           </label>
           <input

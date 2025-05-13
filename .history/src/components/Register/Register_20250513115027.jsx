@@ -4,6 +4,7 @@ import {
   signUpWithEmailAndPassword,
   updateUserProfile,
   loginWithGoogle,
+  loginWithEmailAndPassword,
 } from "../../Firebase/auth";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -74,7 +75,7 @@ const handleRegister = async (e) => {
 
       if (response.ok) {
         // Auto login after successful registration
-        await signUpWithEmailAndPassword(email, password);
+        await loginWithEmailAndPassword(email, password);
 
         // Show SweetAlert for success
         Swal.fire({
@@ -85,7 +86,7 @@ const handleRegister = async (e) => {
           confirmButtonText: "Go to Home",
         }).then((result) => {
           if (result.isConfirmed) {
-            navigate("/"); 
+            navigate("/"); // Redirect to the homepage
           }
         });
       } else {

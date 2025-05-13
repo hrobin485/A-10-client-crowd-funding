@@ -61,7 +61,7 @@ const CampaignForm = () => {
         console.log(data);
         if (data.insertedId) {
           Swal.fire({
-            title: 'Submit',
+            title: 'Deleted!',
             text: 'Campaign submitted successfully.',
             icon: 'success',
             background: isDarkMode() ? '#1f2937' : '#fff',

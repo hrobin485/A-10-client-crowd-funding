@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 import {
   signUpWithEmailAndPassword,
   updateUserProfile,
-  loginWithGoogle,
-} from "../../Firebase/auth";
+  loginWithEmailAndPassword,
+} from "../../Firebase/auth";  // Adjusted to include loginWithEmailAndPassword
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Lottie from "lottie-react";
 import loginAnimation from "../../assets/lottie/register.json";
-import Swal from "sweetalert2"; 
+import Swal from "sweetalert2";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-const handleRegister = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     const { name, email, photoURL, password } = formData;
 
@@ -74,7 +74,7 @@ const handleRegister = async (e) => {
 
       if (response.ok) {
         // Auto login after successful registration
-        await signUpWithEmailAndPassword(email, password);
+        await loginWithEmailAndPassword(email, password);  // Login after registration
 
         // Show SweetAlert for success
         Swal.fire({
@@ -85,7 +85,7 @@ const handleRegister = async (e) => {
           confirmButtonText: "Go to Home",
         }).then((result) => {
           if (result.isConfirmed) {
-            navigate("/"); 
+            navigate("/"); // Redirect to the homepage after confirmation
           }
         });
       } else {
@@ -95,23 +95,6 @@ const handleRegister = async (e) => {
       toast.error(error.message || "Something went wrong.");
     } finally {
       setLoading(false);
-    }
-  };
-
-
-
-  const handleGoogleLogin = async () => {
-    try {
-      await loginWithGoogle();
-      await Swal.fire({
-        icon: "success",
-        title: "Google Login Successful!",
-        text: "Welcome back.",
-        confirmButtonColor: "#3085d6",
-      });
-      navigate("/");
-    } catch (error) {
-      toast.error(error.message || "Google login failed.");
     }
   };
 
@@ -192,9 +175,7 @@ const handleRegister = async (e) => {
               disabled={loading}
             >
               {loading ? "Registering..." : "Register"}
-              
             </button>
-            
           </form>
 
           <div className="text-center mt-4">

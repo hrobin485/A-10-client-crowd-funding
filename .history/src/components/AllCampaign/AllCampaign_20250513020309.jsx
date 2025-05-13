@@ -35,7 +35,7 @@ const AllCampaign = () => {
   };
 
   return (
-    <div className="container mx-auto p-6 my-5 rounded-lg dark:bg-gray-700 dark:text-gray-100">
+    <div className="container mx-auto p-6 dark:bg-gray-700 dark:text-gray-100">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">All Campaigns</h1>
         <button

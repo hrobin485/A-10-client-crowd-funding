@@ -66,15 +66,14 @@ const MyCampaign = () => {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[200px] dark:text-gray-100">
-        <div className="w-12 h-12 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
-        <p className="mt-4 text-lg">Loading my campaign...</p>
+      <div className="flex justify-center items-center min-h-[200px]">
+        <div className="w-10 h-10 border-4 border-blue-500 border-dashed rounded-full animate-spin" />
       </div>
     );
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-6 dark:text-gray-100">
+    <div className="max-w-6xl mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6 dark:text-white">My Campaigns</h1>
 
       {campaigns.length === 0 ? (

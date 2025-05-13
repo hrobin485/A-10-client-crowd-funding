@@ -74,7 +74,7 @@ const MyCampaign = () => {
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-6 dark:text-gray-100">
+    <div className="max-w-6xl mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6 dark:text-white">My Campaigns</h1>
 
       {campaigns.length === 0 ? (
