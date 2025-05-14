@@ -67,7 +67,7 @@ const MyDonations = () => {
                   {campaign.campaignName}
                 </h2>
                 
-                <h2 className=" text-gray-800 dark:text-white">
+                <h2 className="text-xl font-bold text-gray-800 dark:text-white">
                   type : {campaign.campaignType}
                 </h2>
 

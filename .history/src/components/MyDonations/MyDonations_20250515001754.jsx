@@ -54,9 +54,9 @@ const MyDonations = () => {
               key={campaign._id}
               className="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105"
             >
-              {campaign.campaignImage && (
+              {campaign.image && (
                 <img
-                  src={campaign.campaignImage}
+                  src={campaign.image}
                   alt={campaign.campaignName}
                   className="w-full h-48 object-cover"
                 />
@@ -66,21 +66,17 @@ const MyDonations = () => {
                 <h2 className="text-xl font-bold text-gray-800 dark:text-white">
                   {campaign.campaignName}
                 </h2>
-                
-                <h2 className=" text-gray-800 dark:text-white">
-                  type : {campaign.campaignType}
-                </h2>
 
                 <p className="text-gray-600 dark:text-gray-300 flex items-center gap-2">
                   <FaDonate className="text-green-600" />
                   <span className="font-semibold">
-                   amountDonated : ${campaign.amountDonated || "N/A"}
+                    ${campaign.amountDonated || "N/A"}
                   </span>
                 </p>
 
                 <p className="text-gray-600 dark:text-gray-300 flex items-center gap-2">
                   <FaCalendarAlt className="text-blue-600" />
-                  donatedDate : {new Date(campaign.donatedAt).toLocaleDateString()}
+                  {new Date(campaign.donatedAt).toLocaleDateString()}
                 </p>
               </div>
             </div>

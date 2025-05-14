@@ -38,7 +38,7 @@ const ContactUs = () => {
 
   return (
     <div className="px-6 py-10 max-w-4xl mx-auto">
-      <h1 className="text-4xl font-bold text-white text-center mb-8">Contact <span className='font-bold text-blue-600'>Us</span></h1>
+      <h1 className="text-4xl font-bold  text-center mb-8">Contact <span className='font-bold text-blue-600'>Us</span></h1>
 
       <form
         onSubmit={handleSubmit}

@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import AuthContext from "../AuthContext/AuthContext";
 import Swal from "sweetalert2";
@@ -9,7 +9,6 @@ const CampaignDetail = () => {
   const { id } = useParams();
   const [campaign, setCampaign] = useState(null);
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -92,14 +91,12 @@ const CampaignDetail = () => {
       });
 
       if (response.ok) {
-         Swal.fire({
+        Swal.fire({
           icon: "success",
           title: "Thank you!",
           text: `Your donation of $${amount} was successful.`,
           background: document.documentElement.classList.contains("dark") ? "#1f2937" : "#fff",
           color: document.documentElement.classList.contains("dark") ? "#f3f4f6" : "#111827",
-        }).then(() => {
-          navigate('/dashboard/my-donations');
         });
       } else {
         Swal.fire("Error", "Failed to donate. Please try again.", "error");

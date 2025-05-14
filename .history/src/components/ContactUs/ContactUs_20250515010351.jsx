@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -9,8 +8,6 @@ const ContactUs = () => {
     subject: '',
     message: '',
   });
-
-  const navigate = useNavigate();
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -29,8 +26,6 @@ const ContactUs = () => {
       background: document.documentElement.classList.contains('dark') ? '#1f2937' : '#fff',
       color: document.documentElement.classList.contains('dark') ? '#f3f4f6' : '#111827',
       confirmButtonColor: '#3b82f6',
-    }).then(() => {
-      navigate('/'); // 👈 Redirect to homepage after alert
     });
 
     setFormData({ name: '', email: '', subject: '', message: '' });
@@ -38,7 +33,7 @@ const ContactUs = () => {
 
   return (
     <div className="px-6 py-10 max-w-4xl mx-auto">
-      <h1 className="text-4xl font-bold text-white text-center mb-8">Contact <span className='font-bold text-blue-600'>Us</span></h1>
+      <h1 className="text-4xl font-bold text-blue-600 text-center mb-8">Contact Us</h1>
 
       <form
         onSubmit={handleSubmit}

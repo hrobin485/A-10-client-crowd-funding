@@ -32,7 +32,7 @@ const UpdateCampaign = () => {
     };
 
     try {
-      const res = await fetch(`https://crowdfunding-store-server.vercel.app/campaign/${id}`, {
+      const res = await fetch(`http://localhost:5000/campaign/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedCampaign),

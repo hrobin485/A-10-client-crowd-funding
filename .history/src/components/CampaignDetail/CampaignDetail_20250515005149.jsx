@@ -99,7 +99,7 @@ const CampaignDetail = () => {
           background: document.documentElement.classList.contains("dark") ? "#1f2937" : "#fff",
           color: document.documentElement.classList.contains("dark") ? "#f3f4f6" : "#111827",
         }).then(() => {
-          navigate('/dashboard/my-donations');
+          navigate('/');
         });
       } else {
         Swal.fire("Error", "Failed to donate. Please try again.", "error");
