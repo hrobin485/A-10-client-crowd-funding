@@ -46,7 +46,7 @@ const UpdateCampaign = () => {
           background: isDarkMode() ? '#1f2937' : '#fff',
           color: isDarkMode() ? '#f3f4f6' : '#000',
         });
-        navigate("/dashboard/my-campaigns");
+        navigate("dashboard/my-campaigns");
       } else {
         const error = await res.json();
         throw new Error(error.message || "Failed to update");

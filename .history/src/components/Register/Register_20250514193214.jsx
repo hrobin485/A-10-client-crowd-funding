@@ -39,7 +39,7 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-const handleRegister = async (e) => {
+ const handleRegister = async (e) => {
     e.preventDefault();
     const { name, email, photoURL, password } = formData;
 
@@ -73,7 +73,8 @@ const handleRegister = async (e) => {
       const data = await response.json();
 
       if (response.ok) {
-        
+        // Auto login after successful registration
+        await loginWithEmailAndPassword(email, password);
 
         // Show SweetAlert for success
         Swal.fire({
@@ -81,10 +82,10 @@ const handleRegister = async (e) => {
           title: "Registration Successful!",
           text: "You are now logged in and ready to explore.",
           confirmButtonColor: "#3085d6",
-          
+          confirmButtonText: "Go to Home",
         }).then((result) => {
           if (result.isConfirmed) {
-            navigate("/"); 
+            navigate("/"); // Redirect to the homepage
           }
         });
       } else {
@@ -105,7 +106,7 @@ const handleRegister = async (e) => {
       await Swal.fire({
         icon: "success",
         title: "Google Login Successful!",
-        text: "Welcome.",
+        text: "Welcome back.",
         confirmButtonColor: "#3085d6",
       });
       navigate("/");

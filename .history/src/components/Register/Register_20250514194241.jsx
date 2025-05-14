@@ -105,7 +105,7 @@ const handleRegister = async (e) => {
       await Swal.fire({
         icon: "success",
         title: "Google Login Successful!",
-        text: "Welcome.",
+        text: "Welcome back.",
         confirmButtonColor: "#3085d6",
       });
       navigate("/");

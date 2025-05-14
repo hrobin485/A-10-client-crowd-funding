@@ -69,7 +69,7 @@ const CampaignForm = () => {
             background: isDarkMode() ? '#1f2937' : '#fff',
             color: isDarkMode() ? '#f3f4f6' : '#000',
           }).then(() => {
-            navigate('/dashboard/my-campaigns'); 
+            navigate('/'); // Navigate to home after alert is closed
           });
         }
       });

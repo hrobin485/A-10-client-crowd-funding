@@ -34,52 +34,36 @@ const Login = () => {
     return () => unsubscribe();
   }, []);
 
-const handleLogin = async (e) => {
-  e.preventDefault();
-  setLoading(true);
-  try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    const loggedInUser = userCredential.user;
-    localStorage.setItem("user", JSON.stringify(loggedInUser));
-    localStorage.setItem("token", loggedInUser.accessToken);
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const loggedInUser = userCredential.user;
+      localStorage.setItem("user", JSON.stringify(loggedInUser));
+      localStorage.setItem("token", loggedInUser.accessToken);
+      toast.success("Login successful!");
+      navigate("/");
+    } catch (error) {
+      setPasswordError("Invalid email or password.");
+      toast.error(error.message || "Login failed.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    await Swal.fire({
-      icon: "success",
-      title: "Login Successful!",
-      text: "Welcome back.",
-      confirmButtonColor: "#3085d6",
-    });
-
-    navigate("/");
-  } catch (error) {
-    setPasswordError("Invalid email or password.");
-    toast.error(error.message || "Login failed.");
-  } finally {
-    setLoading(false);
-  }
-};
-
-
- const handleGoogleLogin = async () => {
-  try {
-    const result = await signInWithPopup(auth, googleProvider);
-    const loggedInUser = result.user;
-    localStorage.setItem("user", JSON.stringify(loggedInUser));
-    localStorage.setItem("token", loggedInUser.accessToken);
-
-    await Swal.fire({
-      icon: "success",
-      title: "Google Login Successful!",
-      text: "Welcome.",
-      confirmButtonColor: "#3085d6",
-    });
-
-    navigate("/");
-  } catch (error) {
-    toast.error(error.message || "Google login failed.");
-  }
-};
-
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const loggedInUser = result.user;
+      localStorage.setItem("user", JSON.stringify(loggedInUser));
+      localStorage.setItem("token", loggedInUser.accessToken);
+      toast.success("Google login successful!");
+      navigate("/");
+    } catch (error) {
+      toast.error(error.message || "Google login failed.");
+    }
+  };
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);

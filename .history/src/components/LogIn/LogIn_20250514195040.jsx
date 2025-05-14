@@ -60,26 +60,18 @@ const handleLogin = async (e) => {
 };
 
 
- const handleGoogleLogin = async () => {
-  try {
-    const result = await signInWithPopup(auth, googleProvider);
-    const loggedInUser = result.user;
-    localStorage.setItem("user", JSON.stringify(loggedInUser));
-    localStorage.setItem("token", loggedInUser.accessToken);
-
-    await Swal.fire({
-      icon: "success",
-      title: "Google Login Successful!",
-      text: "Welcome.",
-      confirmButtonColor: "#3085d6",
-    });
-
-    navigate("/");
-  } catch (error) {
-    toast.error(error.message || "Google login failed.");
-  }
-};
-
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const loggedInUser = result.user;
+      localStorage.setItem("user", JSON.stringify(loggedInUser));
+      localStorage.setItem("token", loggedInUser.accessToken);
+      toast.success("Google login successful!");
+      navigate("/");
+    } catch (error) {
+      toast.error(error.message || "Google login failed.");
+    }
+  };
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);

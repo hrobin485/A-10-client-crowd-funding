@@ -40,15 +40,19 @@ const CampaignDetail = () => {
     }
 
     // Ask the user to enter a donation amount
-    const amountStr = prompt(`Enter donation amount in USD (Minimum: $${campaign.minDonation}):`);
+    const amountStr = prompt("Enter donation amount in USD:");
     const amount = parseFloat(amountStr);
 
-    if (isNaN(amount) || amount < parseFloat(campaign.minDonation)) {
-      alert(`Donation amount must be at least $${campaign.minDonation}.`);
+    if (isNaN(amount) || amount <= 0) {
+      alert("Please enter a valid amount.");
       return;
     }
 
 
+    if (isNaN(amount) || amount <= 0) {
+      alert("Please enter a valid amount.");
+      return;
+    }
 
     const donationData = {
       campaignId: id,

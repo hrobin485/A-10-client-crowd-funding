@@ -52,55 +52,41 @@ const MyCampaign = () => {
   }, [userEmail]);
 
   // Delete handler
-  const handleDelete = async (id) => {
-    const confirm = await Swal.fire({
-      title: 'Are you sure?',
-      text: "Do you really want to delete this campaign?",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Yes, delete it!'
+const handleDelete = async (id) => {
+  const confirm = window.confirm("Are you sure you want to delete this campaign?");
+  if (!confirm) return;
+
+  try {
+    const res = await fetch(`http://localhost:5000/campaign/${id}`, {
+      method: "DELETE",
     });
 
-    if (!confirm.isConfirmed) return;
+    const text = await res.text();
 
-    try {
-      const res = await fetch(`http://localhost:5000/campaign/${id}`, {
-        method: "DELETE",
-      });
+    if (res.ok) {
+      try {
+        const result = JSON.parse(text);
 
-      const text = await res.text();
-
-      if (res.ok) {
-        try {
-          const result = JSON.parse(text);
-
-          if (result.message === "Campaign deleted successfully") {
-            setCampaigns((prev) => prev.filter((c) => c._id !== id));
-
-            // SweetAlert success message
-            Swal.fire(
-              'Deleted!',
-              'Campaign has been deleted.',
-              'success'
-            );
-          } else {
-            console.error("Campaign not deleted:", result);
-            Swal.fire('Error', 'Campaign not deleted. Please try again.', 'error');
-          }
-        } catch (error) {
-          console.error("Failed to parse JSON:", error);
-          Swal.fire('Error', 'Unable to delete campaign.', 'error');
+        // Check the message returned from the backend
+        if (result.message === "Campaign deleted successfully") {
+          // Remove the deleted campaign from the UI
+          setCampaigns((prev) => prev.filter((c) => c._id !== id));
+        } else {
+          console.error("Campaign not deleted:", result);
+          alert("Campaign not deleted. Please try again.");
         }
-      } else {
-        Swal.fire('Error', 'Something went wrong while deleting. Please try again.', 'error');
+      } catch (error) {
+        console.error("Failed to parse JSON:", error);
+        alert("Error: Unable to delete campaign.");
       }
-    } catch (err) {
-      console.error("Delete failed:", err);
-      Swal.fire('Error', 'Something went wrong while deleting.', 'error');
+    } else {
+      alert("Something went wrong while deleting. Please try again.");
     }
-  };
+  } catch (err) {
+    console.error("Delete failed:", err);
+    alert("Something went wrong while deleting.");
+  }
+};
 
 
 
@@ -131,13 +117,10 @@ const MyCampaign = () => {
                 <th className="p-3 border dark:border-gray-600">Image</th>
                 <th className="p-3 border dark:border-gray-600">Title</th>
                 <th className="p-3 border dark:border-gray-600">Type</th>
-                <th className="p-3 border dark:border-gray-600">Min Donation</th>
-           
                 <th className="p-3 border dark:border-gray-600">Deadline</th>
                 <th className="p-3 border dark:border-gray-600">Actions</th>
               </tr>
             </thead>
-
             <tbody>
               {campaigns.map((campaign) => (
                 <tr key={campaign._id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
@@ -150,8 +133,6 @@ const MyCampaign = () => {
                   </td>
                   <td className="p-3 border dark:border-gray-600">{campaign.title}</td>
                   <td className="p-3 border dark:border-gray-600">{campaign.type}</td>
-                  <td className="p-3 border dark:border-gray-600">${campaign.minDonation}</td>
-                  
                   <td className="p-3 border dark:border-gray-600">
                     {new Date(campaign.deadline).toLocaleDateString("en-GB")}
                   </td>

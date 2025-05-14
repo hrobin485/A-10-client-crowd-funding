@@ -150,7 +150,7 @@ const MyCampaign = () => {
                   </td>
                   <td className="p-3 border dark:border-gray-600">{campaign.title}</td>
                   <td className="p-3 border dark:border-gray-600">{campaign.type}</td>
-                  <td className="p-3 border dark:border-gray-600">${campaign.minDonation}</td>
+                  <td className="p-3 border dark:border-gray-600">{campaign.minDonation}</td>
                   
                   <td className="p-3 border dark:border-gray-600">
                     {new Date(campaign.deadline).toLocaleDateString("en-GB")}

@@ -165,9 +165,9 @@ const Navbar = () => {
             <NavLink to="/LogIn">
               <button className={({ isActive }) =>
                 isActive
-                  ? "text-blue-700 dark:text-emerald-400 font-semibold"
-                  : "hover:text-blue-700 dark:hover:text-emerald-300"
-              }>LogIn</button>
+                  ? "text-blue-500 dark:text-emerald-400 font-semibold"
+                  : "hover:text-blue-500 dark:hover:text-emerald-300"
+              }>Log In</button>
             </NavLink>
             <NavLink to="/Register">
               <button className={({ isActive }) =>

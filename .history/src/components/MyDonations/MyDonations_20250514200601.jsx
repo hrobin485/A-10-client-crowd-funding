@@ -32,9 +32,7 @@ const MyDonations = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-center mb-10 text-blue-700 dark:text-blue-300">
-        My Donated Campaigns
-      </h1>
+      
 
       {loading ? (
         <div className="flex flex-col items-center justify-center py-20">
@@ -49,6 +47,9 @@ const MyDonations = () => {
         </p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <h1 className="text-3xl font-bold text-center mb-10 text-blue-700 dark:text-blue-300">
+        My Donated Campaigns
+      </h1>
           {donatedCampaigns.map((campaign) => (
             <div
               key={campaign._id}
@@ -61,7 +62,7 @@ const MyDonations = () => {
                   className="w-full h-48 object-cover"
                 />
               )}
-
+           
               <div className="p-6 space-y-3">
                 <h2 className="text-xl font-bold text-gray-800 dark:text-white">
                   {campaign.campaignName}

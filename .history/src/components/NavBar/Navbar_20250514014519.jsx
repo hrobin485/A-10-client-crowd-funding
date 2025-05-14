@@ -44,71 +44,71 @@ const Navbar = () => {
     navigate("/");
   };
 
-  const navLinks = (
-    <>
-      <li>
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            isActive
-              ? "text-blue-500 dark:text-emerald-400 font-semibold"
-              : "hover:text-blue-500 dark:hover:text-emerald-300"
-          }
-        >
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/AllCampaign"
-          className={({ isActive }) =>
-            isActive
-              ? "text-blue-500 dark:text-emerald-400 font-semibold"
-              : "hover:text-blue-500 dark:hover:text-emerald-300"
-          }
-        >
-          All Campaign
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/Dashboard"
-          className={({ isActive }) =>
-            isActive
-              ? "text-blue-500 dark:text-emerald-400 font-semibold"
-              : "hover:text-blue-500 dark:hover:text-emerald-300"
-          }
-        >
-          Dashboard
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/AboutUs"
-          className={({ isActive }) =>
-            isActive
-              ? "text-blue-500 dark:text-emerald-400 font-semibold"
-              : "hover:text-blue-500 dark:hover:text-emerald-300"
-          }
-        >
-          About Us
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/ContactUs"
-          className={({ isActive }) =>
-            isActive
-              ? "text-blue-500 dark:text-emerald-400 font-semibold"
-              : "hover:text-blue-500 dark:hover:text-emerald-300"
-          }
-        >
-          Contact Us
-        </NavLink>
-      </li>
-
-    </>
-  );
+ const navLinks = (
+  <>
+    <li>
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          isActive
+            ? "text-blue-500 dark:text-emerald-400 font-semibold"
+            : "hover:text-blue-500 dark:hover:text-emerald-300"
+        }
+      >
+        Home
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        to="/AllCampaign"
+        className={({ isActive }) =>
+          isActive
+            ? "text-blue-500 dark:text-emerald-400 font-semibold"
+            : "hover:text-blue-500 dark:hover:text-emerald-300"
+        }
+      >
+        All Campaign
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        to="/Dashboard"
+        className={({ isActive }) =>
+          isActive
+            ? "text-blue-500 dark:text-emerald-400 font-semibold"
+            : "hover:text-blue-500 dark:hover:text-emerald-300"
+        }
+      >
+        Dashboard
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        to="/AboutUs"
+        className={({ isActive }) =>
+          isActive
+            ? "text-blue-500 dark:text-emerald-400 font-semibold"
+            : "hover:text-blue-500 dark:hover:text-emerald-300"
+        }
+      >
+        About Us
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        to="/ContactUs"
+        className={({ isActive }) =>
+          isActive
+            ? "text-blue-500 dark:text-emerald-400 font-semibold"
+            : "hover:text-blue-500 dark:hover:text-emerald-300"
+        }
+      >
+       Contact Us
+      </NavLink>
+    </li>
+    
+  </>
+);
 
   return (
     <div className="navbar backdrop-blur-md bg-slate-300/60 dark:bg-gray-800/60 text-black dark:text-white rounded-lg px-4 sticky top-0 z-50">
@@ -163,18 +163,14 @@ const Navbar = () => {
         ) : (
           <>
             <NavLink to="/LogIn">
-              <button className={({ isActive }) =>
-                isActive
-                  ? "text-blue-700 dark:text-emerald-400 font-semibold"
-                  : "hover:text-blue-700 dark:hover:text-emerald-300"
-              }>LogIn</button>
+              <button className="bg-black text-white px-4 py-2 rounded hover:bg-blue-500">Log In</button>
             </NavLink>
             <NavLink to="/Register">
-              <button className={({ isActive }) =>
-                isActive
-                  ? "text-blue-500 dark:text-emerald-400 font-semibold"
-                  : "hover:text-blue-500 dark:hover:text-emerald-300"
-              }>Register</button>
+              <button  className={({ isActive }) =>
+          isActive
+            ? "text-blue-500 dark:text-emerald-400 font-semibold"
+            : "hover:text-blue-500 dark:hover:text-emerald-300"
+        }>Register</button>
             </NavLink>
           </>
         )}

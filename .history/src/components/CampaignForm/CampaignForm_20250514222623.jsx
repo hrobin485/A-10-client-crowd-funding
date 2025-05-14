@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { auth } from "../../Firebase/auth"; // Import Firebase auth or your auth system
 import Swal from 'sweetalert2';
-import {useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
   const isDarkMode = () => document.documentElement.classList.contains('dark');
 const CampaignForm = () => {
   const [user, setUser] = useState({ name: "", email: "" });
-   const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch logged-in user information from Firebase or your auth system
@@ -68,10 +67,9 @@ const CampaignForm = () => {
             icon: 'success',
             background: isDarkMode() ? '#1f2937' : '#fff',
             color: isDarkMode() ? '#f3f4f6' : '#000',
-          }).then(() => {
-            navigate('/dashboard/my-campaigns'); 
           });
         }
+        Navigate("/")
       });
   };
 

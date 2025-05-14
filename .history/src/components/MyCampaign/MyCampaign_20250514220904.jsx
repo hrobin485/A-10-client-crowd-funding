@@ -132,7 +132,7 @@ const MyCampaign = () => {
                 <th className="p-3 border dark:border-gray-600">Title</th>
                 <th className="p-3 border dark:border-gray-600">Type</th>
                 <th className="p-3 border dark:border-gray-600">Min Donation</th>
-           
+                <th className="p-3 border dark:border-gray-600">Description</th>
                 <th className="p-3 border dark:border-gray-600">Deadline</th>
                 <th className="p-3 border dark:border-gray-600">Actions</th>
               </tr>
@@ -150,8 +150,8 @@ const MyCampaign = () => {
                   </td>
                   <td className="p-3 border dark:border-gray-600">{campaign.title}</td>
                   <td className="p-3 border dark:border-gray-600">{campaign.type}</td>
-                  <td className="p-3 border dark:border-gray-600">${campaign.minDonation}</td>
-                  
+                  <td className="p-3 border dark:border-gray-600">{campaign.minDonation}</td>
+                  <td className="p-3 border dark:border-gray-600">{campaign.description}</td>
                   <td className="p-3 border dark:border-gray-600">
                     {new Date(campaign.deadline).toLocaleDateString("en-GB")}
                   </td>

@@ -32,11 +32,12 @@ const UpdateCampaign = () => {
     };
 
     try {
-      const res = await fetch(`http://localhost:5000/campaign/${id}`, {
+      const res = await fetch(`https://crowdfunding-store-server.vercel.app/campaign/${campaign._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedCampaign),
       });
+
 
       if (res.ok) {
         Swal.fire({
@@ -46,7 +47,7 @@ const UpdateCampaign = () => {
           background: isDarkMode() ? '#1f2937' : '#fff',
           color: isDarkMode() ? '#f3f4f6' : '#000',
         });
-        navigate("/dashboard/my-campaigns");
+        navigate("/MyCampaign");
       } else {
         const error = await res.json();
         throw new Error(error.message || "Failed to update");

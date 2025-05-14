@@ -28,7 +28,7 @@ const Dashboard = () => {
       <aside
         className={`${
           sidebarOpen ? 'block' : 'hidden'
-        } md:block w-full md:w-64 bg-white dark:bg-gray-800  rounded-lg p-6 shadow-lg z-10 md:relative fixed md:static top-0 left-0 h-full overflow-y-auto transition-all `}
+        } md:block w-full md:w-64 bg-white dark:bg-gray-800 mt-15 p-6 shadow-lg z-10 md:relative fixed md:static top-0 left-0 h-full overflow-y-auto transition-all `}
       >
         <h2 className="text-2xl font-bold text-blue-600 mb-6 hidden md:block">Dashboard</h2>
         <nav className="flex flex-col gap-4">
