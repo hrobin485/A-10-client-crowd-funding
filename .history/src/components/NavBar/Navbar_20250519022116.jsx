@@ -139,7 +139,7 @@ const Navbar = () => {
 
         {/* mobile dropdown */}
         {open && (
-          <ul className="w-full lg:hidden flex flex-col gap-3 mt-2 max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-400 dark:scrollbar-thumb-slate-600">
+          <ul className="w-full lg:hidden flex flex-col gap-3 mt-2">
             {mobileLinks}
           </ul>
         )}

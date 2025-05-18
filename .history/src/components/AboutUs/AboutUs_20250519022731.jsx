@@ -3,7 +3,7 @@ import React from 'react';
 const AboutUs = () => {
   return (
     <div className="px-6 py-10 max-w-7xl mx-auto">
-     <h1 className="text-4xl font-bold dark:text-white text-center mb-8">About <span className='font-bold text-blue-600'>Us</span></h1>
+     <h1 className="text-4xl font-bold dark:text-white text-center mb-8">About<span className='font-bold text-blue-600'>Us</span></h1>
 
 
       {/* Introduction */}

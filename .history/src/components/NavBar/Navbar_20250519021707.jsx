@@ -30,13 +30,8 @@ const Navbar = () => {
   };
 
   /* ------------------------------------------------------------------
-   *  helper utils
+   *  tailwind helpers
    * ----------------------------------------------------------------*/
-  const closeMenus = () => {
-    setOpen(false);
-    setDashOpen(false);
-  };
-
   const active = "text-blue-500 dark:text-emerald-400 font-semibold";
   const normal = "hover:text-blue-500 dark:hover:text-emerald-300";
   const linkCls = ({ isActive }) => (isActive ? active : normal);
@@ -66,15 +61,15 @@ const Navbar = () => {
   const dashSub = (
     <ul className="pl-4 flex flex-col gap-2 text-sm">
       {dashRoutes.map(({ to, label }) => (
-        <li key={to}><NavLink to={to} className={linkCls} onClick={closeMenus}>{label}</NavLink></li>
+        <li key={to}><NavLink to={to} className={linkCls}>{label}</NavLink></li>
       ))}
     </ul>
   );
 
   const mobileLinks = (
     <>
-      <li><NavLink to="/" className={linkCls} onClick={closeMenus}>Home</NavLink></li>
-      <li><NavLink to="/AllCampaign" className={linkCls} onClick={closeMenus}>All Campaign</NavLink></li>
+      <li><NavLink to="/" className={linkCls}>Home</NavLink></li>
+      <li><NavLink to="/AllCampaign" className={linkCls}>All Campaign</NavLink></li>
       <li>
         <button
           type="button"
@@ -88,8 +83,8 @@ const Navbar = () => {
         </button>
         {dashOpen && dashSub}
       </li>
-      <li><NavLink to="/AboutUs" className={linkCls} onClick={closeMenus}>About Us</NavLink></li>
-      <li><NavLink to="/ContactUs" className={linkCls} onClick={closeMenus}>Contact Us</NavLink></li>
+      <li><NavLink to="/AboutUs" className={linkCls}>About Us</NavLink></li>
+      <li><NavLink to="/ContactUs" className={linkCls}>Contact Us</NavLink></li>
     </>
   );
 
@@ -118,18 +113,18 @@ const Navbar = () => {
               <img
                 src={user.photoURL || "https://via.placeholder.com/150"}
                 className="h-8 w-8 rounded-full" referrerPolicy="no-referrer"
-                onClick={() => { closeMenus(); navigate("/Profile"); }}
+                onClick={() => navigate("/Profile")}
               />
               <button
                 type="button"
-                onClick={async () => { await signOut(auth); closeMenus(); navigate("/"); }}
+                onClick={async () => { await signOut(auth); navigate("/"); }}
                 className="bg-slate-300 dark:bg-gray-600 px-3 py-1 rounded text-sm hover:bg-gray-400 dark:hover:bg-gray-500"
               >Log Out</button>
             </>
           ) : (
             <>
-              <NavLink to="/LogIn" className={linkCls} onClick={closeMenus}>LogIn</NavLink>
-              <NavLink to="/Register" className={linkCls} onClick={closeMenus}>Register</NavLink>
+              <NavLink to="/LogIn" className={linkCls}>LogIn</NavLink>
+              <NavLink to="/Register" className={linkCls}>Register</NavLink>
             </>
           )}
           <button type="button" onClick={toggleTheme} className="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
@@ -139,7 +134,7 @@ const Navbar = () => {
 
         {/* mobile dropdown */}
         {open && (
-          <ul className="w-full lg:hidden flex flex-col gap-3 mt-2 max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-400 dark:scrollbar-thumb-slate-600">
+          <ul className="w-full lg:hidden flex flex-col gap-3 mt-2">
             {mobileLinks}
           </ul>
         )}

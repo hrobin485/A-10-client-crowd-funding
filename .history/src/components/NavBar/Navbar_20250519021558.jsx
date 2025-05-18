@@ -7,9 +7,9 @@ import { HiMoon, HiSun } from "react-icons/hi";
 const Navbar = () => {
   const [user, setUser] = useState(null);
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("theme") === "dark");
-  const [open, setOpen] = useState(false);          // hamburger open/close
-  const [dashOpen, setDashOpen] = useState(false);  // dashboard sub‑menu (mobile only)
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);            // hamburger
+  const [dashOpen, setDashOpen] = useState(false);    // mobile‑only dashboard dropdown
 
   /* ------------------------------------------------------------------
    *  theme + auth observers
@@ -30,13 +30,8 @@ const Navbar = () => {
   };
 
   /* ------------------------------------------------------------------
-   *  helper utils
+   *  tailwind helpers (plain JS – no TS syntax)
    * ----------------------------------------------------------------*/
-  const closeMenus = () => {
-    setOpen(false);
-    setDashOpen(false);
-  };
-
   const active = "text-blue-500 dark:text-emerald-400 font-semibold";
   const normal = "hover:text-blue-500 dark:hover:text-emerald-300";
   const linkCls = ({ isActive }) => (isActive ? active : normal);
@@ -66,20 +61,19 @@ const Navbar = () => {
   const dashSub = (
     <ul className="pl-4 flex flex-col gap-2 text-sm">
       {dashRoutes.map(({ to, label }) => (
-        <li key={to}><NavLink to={to} className={linkCls} onClick={closeMenus}>{label}</NavLink></li>
+        <li key={to}><NavLink to={to} className={linkCls}>{label}</NavLink></li>
       ))}
     </ul>
   );
 
   const mobileLinks = (
     <>
-      <li><NavLink to="/" className={linkCls} onClick={closeMenus}>Home</NavLink></li>
-      <li><NavLink to="/AllCampaign" className={linkCls} onClick={closeMenus}>All Campaign</NavLink></li>
+      <li><NavLink to="/" className={linkCls}>Home</NavLink></li>
+      <li><NavLink to="/AllCampaign" className={linkCls}>All Campaign</NavLink></li>
       <li>
         <button
-          type="button"
           className="flex items-center justify-between w-full"
-          onClick={() => setDashOpen(prev => !prev)}
+          onClick={() => setDashOpen(!dashOpen)}
         >
           <span className={`${dashOpen ? "font-semibold text-blue-500 dark:text-emerald-400" : ""}`}>Dashboard</span>
           <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -88,8 +82,8 @@ const Navbar = () => {
         </button>
         {dashOpen && dashSub}
       </li>
-      <li><NavLink to="/AboutUs" className={linkCls} onClick={closeMenus}>About Us</NavLink></li>
-      <li><NavLink to="/ContactUs" className={linkCls} onClick={closeMenus}>Contact Us</NavLink></li>
+      <li><NavLink to="/AboutUs" className={linkCls}>About Us</NavLink></li>
+      <li><NavLink to="/ContactUs" className={linkCls}>Contact Us</NavLink></li>
     </>
   );
 
@@ -99,7 +93,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between py-2 gap-y-2">
         {/* brand + hamburger */}
         <div className="flex items-center gap-2 flex-shrink-0">
-          <button type="button" className="lg:hidden p-2" onClick={() => setOpen(prev => !prev)}>
+          <button className="lg:hidden p-2" onClick={() => setOpen(!open)}>
             <svg className="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               {open ? <path d="M18 6L6 18M6 6l12 12" /> : <path d="M3 6h18M3 12h18M3 18h18" />}
             </svg>
@@ -118,28 +112,35 @@ const Navbar = () => {
               <img
                 src={user.photoURL || "https://via.placeholder.com/150"}
                 className="h-8 w-8 rounded-full" referrerPolicy="no-referrer"
-                onClick={() => { closeMenus(); navigate("/Profile"); }}
+                onClick={() => navigate("/Profile")}
               />
               <button
-                type="button"
-                onClick={async () => { await signOut(auth); closeMenus(); navigate("/"); }}
+                onClick={async () => { await signOut(auth); navigate("/"); }}
                 className="bg-slate-300 dark:bg-gray-600 px-3 py-1 rounded text-sm hover:bg-gray-400 dark:hover:bg-gray-500"
               >Log Out</button>
             </>
           ) : (
             <>
-              <NavLink to="/LogIn" className={linkCls} onClick={closeMenus}>LogIn</NavLink>
-              <NavLink to="/Register" className={linkCls} onClick={closeMenus}>Register</NavLink>
+              <NavLink to="/LogIn" className={linkCls}>LogIn</NavLink>
+              <NavLink to="/Register" className={linkCls}>Register</NavLink>
             </>
           )}
-          <button type="button" onClick={toggleTheme} className="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+          <button onClick={toggleTheme} className="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
             {darkMode ? <HiSun size={18} className="text-yellow-500" /> : <HiMoon size={18} className="text-gray-600" />}
           </button>
         </div>
 
         {/* mobile dropdown */}
+        {/* mobile dropdown */}
         {open && (
-          <ul className="w-full lg:hidden flex flex-col gap-3 mt-2 max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-400 dark:scrollbar-thumb-slate-600">
+          <ul className="w-full lg:hidden flex flex-col gap-3 mt-2">
+            {React.Children.map(mobileLinks.props.children, child =>
+              React.cloneElement(child, {
+                onClick: () => setOpen(false)
+              })
+            )}
+          </ul>
+        )}>
             {mobileLinks}
           </ul>
         )}
