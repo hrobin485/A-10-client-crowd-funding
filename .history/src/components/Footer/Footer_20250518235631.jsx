@@ -21,9 +21,9 @@ const Footer = () => {
         <div className="border-t border-gray-200 dark:border-gray-700 mb-10" />
 
         {/* Grid */}
-        <div className="grid  gap-5 lg:gap-52  md:grid-cols-4 md:gap-16 text-sm text-gray-600 dark:text-gray-300">
+        <div className="flex gap-x-48  md:grid-cols-4 text-sm text-gray-600 dark:text-gray-300">
           {/* Contact */}
-          <div className="flex flex-col gap-3 lg:gap-1">
+          <div className="flex flex-col gap-3">
             <h3 className="text-lg font-semibold text-gray-800 dark:text-white">Contact Us</h3>
             <p>Email: <a href="mailto:info@crowdfunding.org" className="hover:text-blue-600">info@crowdfunding.org</a></p>
             <p>Phone: <a href="tel:+1234567890" className="hover:text-blue-600">+1&nbsp;234&nbsp;567&nbsp;890</a></p>
@@ -43,7 +43,7 @@ const Footer = () => {
               <li>
                 <a href="https://twitter.com/YourProfile" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 group">
                   <FaXTwitter className="text-xl group-hover:text-black transition-transform group-hover:scale-110" />
-                  Twitter<span className="sr-only"> (Twitter)</span>
+                  X<span className="sr-only"> (Twitter)</span>
                 </a>
               </li>
               <li>
@@ -73,7 +73,7 @@ const Footer = () => {
           </div>
 
           {/* Legal */}
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 md:text-right">
             <h3 className="text-lg font-semibold text-gray-800 dark:text-white">Legal</h3>
             <p>© {new Date().getFullYear()} StudyHive</p>
             <p>All Rights Reserved.</p>
