@@ -1,9 +1,6 @@
-
+// src/components/BannerHero.jsx
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { onAuthStateChanged } from "firebase/auth";
 import { Typewriter } from "react-simple-typewriter";
-import { auth } from "../../Firebase/auth";   
 
 const slides = [
   {
@@ -33,44 +30,38 @@ const slides = [
   },
 ];
 
-export default function Banner() {
+export default function BannerHero() {
+  /* ------------ mini‑carousel logic ------------ */
   const [index, setIndex] = useState(0);
-  const [user, setUser] = useState(null);
-  const navigate = useNavigate();
 
-  /* auto‑carousel */
+  // auto‑slide every 8 s
   useEffect(() => {
-    const t = setInterval(() => setIndex((i) => (i + 1) % slides.length), 3000);
-    return () => clearInterval(t);
+    const timer = setInterval(
+      () => setIndex((i) => (i + 1) % slides.length),
+      8000
+    );
+    return () => clearInterval(timer);
   }, []);
-
-  /* listen once for auth state */
-  useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (u) => setUser(u));
-    return () => unsub();
-  }, []);
-
-  /* click handler */
-  const handleGetStarted = () => {
-    if (user) {
-      navigate("/dashboard/overview");   
-    } else {
-      navigate("/login");                
-    }
-  };
 
   return (
-    <section className="relative mt-5 rounded-xl bg-gradient-to-br from-blue-100 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <section className="relative bg-gradient-to-br from-blue-100 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-16 grid md:grid-cols-2 gap-8 items-center">
         {/* ───────── left text ───────── */}
         <div className="space-y-6">
           <h1 className="text-4xl font-extrabold text-gray-800 dark:text-white">
-            Welcome to <span className="text-blue-600 dark:text-blue-400">Crowd Funding</span>
+            Welcome to{" "}
+            <span className="text-blue-600 dark:text-blue-400">
+              Crowd Funding
+            </span>
           </h1>
 
           <span className="inline-block bg-white/60 dark:bg-gray-900/50 px-6 py-3 rounded-xl text-blue-700 dark:text-blue-300 text-lg">
             <Typewriter
-              words={["Fundraising made easy.", "Join our community.", "Support your dreams."]}
+              words={[
+                "Fundraising made easy.",
+                "Join our community.",
+                "Support your dreams.",
+              ]}
               loop
               cursor
               cursorStyle="|"
@@ -82,17 +73,15 @@ export default function Banner() {
 
           <p className="text-gray-600 dark:text-gray-300">
             Empower dreams with your support. Start or back campaigns that
-            matter, follow their progress in real‑time, and be part of every
-            milestone—from the very first pledge to the final celebration.
+            matter.
           </p>
 
-
-          <button
-            onClick={handleGetStarted}
-            className="inline-block bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition-colors"
+          <a
+            href="#get-started"
+            className="inline-block bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg"
           >
             Get Started
-          </button>
+          </a>
         </div>
 
         {/* ───────── right mini‑carousel ───────── */}
@@ -102,17 +91,21 @@ export default function Banner() {
               key={id}
               src={image}
               alt=""
-              className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${i === index ? "opacity-100" : "opacity-0"
-                }`}
+              className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${
+                i === index ? "opacity-100" : "opacity-0"
+              }`}
             />
           ))}
 
+          {/* overlay for better text contrast */}
           <div className="absolute inset-0 bg-black/10 dark:bg-black/20 mix-blend-multiply" />
 
           {/* nav buttons */}
           <button
             aria-label="previous slide"
-            onClick={() => setIndex((i) => (i - 1 + slides.length) % slides.length)}
+            onClick={() =>
+              setIndex((i) => (i - 1 + slides.length) % slides.length)
+            }
             className="absolute left-3 top-1/2 -translate-y-1/2 btn btn-circle btn-xs sm:btn-sm bg-white/70 hover:bg-white"
           >
             ❮

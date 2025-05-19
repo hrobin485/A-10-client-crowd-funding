@@ -18,12 +18,12 @@ const Home = () => {
     <div className="rounded-xl">
       
       {/* Banner Section */}
-      <div className="mb-5">
+      <div data-aos="fade-down" className="mb-5">
         <Banner />
       </div>
 
       {/* Running Campaign */}
-      <div >
+      <div data-aos="fade-up">
         <RunningCampaign />
       </div>
 

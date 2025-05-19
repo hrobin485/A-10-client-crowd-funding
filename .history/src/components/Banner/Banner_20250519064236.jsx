@@ -1,10 +1,13 @@
-
-import { useState, useEffect } from "react";
+// src/components/BannerHero/BannerHero.jsx
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { Typewriter } from "react-simple-typewriter";
-import { auth } from "../../Firebase/auth";   
+import { auth } from "../../Firebase/Firebase";              // ← path ঠিক আছে কিনা দেখে নাও
 
+/* ------------------------------------------------------------------ */
+/*  hero‑side mini‑carousel data                                       */
+/* ------------------------------------------------------------------ */
 const slides = [
   {
     id: 1,
@@ -33,16 +36,12 @@ const slides = [
   },
 ];
 
-export default function Banner() {
-  const [index, setIndex] = useState(0);
+/* ------------------------------------------------------------------ */
+/*  main component                                                     */
+/* ------------------------------------------------------------------ */
+const Banner = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
-
-  /* auto‑carousel */
-  useEffect(() => {
-    const t = setInterval(() => setIndex((i) => (i + 1) % slides.length), 3000);
-    return () => clearInterval(t);
-  }, []);
 
   /* listen once for auth state */
   useEffect(() => {
@@ -53,24 +52,29 @@ export default function Banner() {
   /* click handler */
   const handleGetStarted = () => {
     if (user) {
-      navigate("/dashboard/overview");   
+      navigate("/dashboard/overview");   // logged‑in user → dashboard
     } else {
-      navigate("/login");                
+      navigate("/login");                // guest → login page
     }
   };
 
   return (
-    <section className="relative mt-5 rounded-xl bg-gradient-to-br from-blue-100 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <section className="relative bg-gradient-to-br from-blue-100 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-16 grid md:grid-cols-2 gap-8 items-center">
-        {/* ───────── left text ───────── */}
+        {/* ───────────────────────── left side text ───────────────────────── */}
         <div className="space-y-6">
           <h1 className="text-4xl font-extrabold text-gray-800 dark:text-white">
-            Welcome to <span className="text-blue-600 dark:text-blue-400">Crowd Funding</span>
+            Welcome to{" "}
+            <span className="text-blue-600 dark:text-blue-400">Crowd Funding</span>
           </h1>
 
           <span className="inline-block bg-white/60 dark:bg-gray-900/50 px-6 py-3 rounded-xl text-blue-700 dark:text-blue-300 text-lg">
             <Typewriter
-              words={["Fundraising made easy.", "Join our community.", "Support your dreams."]}
+              words={[
+                "Fundraising made easy.",
+                "Join our community.",
+                "Support your dreams.",
+              ]}
               loop
               cursor
               cursorStyle="|"
@@ -81,11 +85,11 @@ export default function Banner() {
           </span>
 
           <p className="text-gray-600 dark:text-gray-300">
-            Empower dreams with your support. Start or back campaigns that
-            matter, follow their progress in real‑time, and be part of every
-            milestone—from the very first pledge to the final celebration.
+            Empower ideas, transform lives. Launch your own campaign in minutes,
+            track donations in real‑time, and engage a global community ready to
+            back innovative projects, medical needs, creative ventures, and
+            everything in between.
           </p>
-
 
           <button
             onClick={handleGetStarted}
@@ -95,37 +99,26 @@ export default function Banner() {
           </button>
         </div>
 
-        {/* ───────── right mini‑carousel ───────── */}
+        {/* ──────────────────────── right side mini‑carousel ─────────────────────── */}
         <div className="relative h-72 md:h-96 lg:h-[28rem] rounded-xl overflow-hidden shadow-lg">
-          {slides.map(({ id, image }, i) => (
-            <img
-              key={id}
-              src={image}
-              alt=""
-              className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${i === index ? "opacity-100" : "opacity-0"
-                }`}
-            />
-          ))}
+          <div className="carousel w-full h-full">
+            {slides.map(({ id, image }) => (
+              <div key={id} className="carousel-item w-full">
+                <img
+                  src={image}
+                  alt="hero slide"
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+            ))}
+          </div>
 
-          <div className="absolute inset-0 bg-black/10 dark:bg-black/20 mix-blend-multiply" />
-
-          {/* nav buttons */}
-          <button
-            aria-label="previous slide"
-            onClick={() => setIndex((i) => (i - 1 + slides.length) % slides.length)}
-            className="absolute left-3 top-1/2 -translate-y-1/2 btn btn-circle btn-xs sm:btn-sm bg-white/70 hover:bg-white"
-          >
-            ❮
-          </button>
-          <button
-            aria-label="next slide"
-            onClick={() => setIndex((i) => (i + 1) % slides.length)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 btn btn-circle btn-xs sm:btn-sm bg-white/70 hover:bg-white"
-          >
-            ❯
-          </button>
+          {/* subtle dark overlay for legibility */}
+          <div className="absolute inset-0 bg-black/10 dark:bg-black/20 mix-blend-multiply pointer-events-none" />
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default Banner;

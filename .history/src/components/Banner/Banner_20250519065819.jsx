@@ -1,9 +1,9 @@
-
+// src/components/BannerHero.jsx
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { Typewriter } from "react-simple-typewriter";
-import { auth } from "../../Firebase/auth";   
+import { auth } from "../../Firebase/auth";   // 🔁  path টা মিলিয়ে নেবেন
 
 const slides = [
   {
@@ -33,14 +33,16 @@ const slides = [
   },
 ];
 
-export default function Banner() {
+export default function BannerHero() {
+  /* ---------------- mini‑carousel ---------------- */
   const [index, setIndex] = useState(0);
+  /* ---------------- auth / nav ------------------- */
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   /* auto‑carousel */
   useEffect(() => {
-    const t = setInterval(() => setIndex((i) => (i + 1) % slides.length), 3000);
+    const t = setInterval(() => setIndex((i) => (i + 1) % slides.length), 8000);
     return () => clearInterval(t);
   }, []);
 
@@ -53,9 +55,9 @@ export default function Banner() {
   /* click handler */
   const handleGetStarted = () => {
     if (user) {
-      navigate("/dashboard/overview");   
+      navigate("/dashboard/overview");   // ⬅️ already logged in
     } else {
-      navigate("/login");                
+      navigate("/login");                // ⬅️ guest → login page
     }
   };
 

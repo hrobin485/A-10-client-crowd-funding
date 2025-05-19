@@ -7,12 +7,13 @@ import { HiMoon, HiSun } from "react-icons/hi";
 const Navbar = () => {
   const [user, setUser] = useState(null);
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("theme") === "dark");
-  const [open, setOpen] = useState(false);          
-  const [dashOpen, setDashOpen] = useState(false);  
+  const [open, setOpen] = useState(false);          // hamburger open/close
+  const [dashOpen, setDashOpen] = useState(false);  // dashboard sub‑menu (mobile only)
   const navigate = useNavigate();
 
-  
-  
+  /* ------------------------------------------------------------------
+   *  theme + auth observers
+   * ----------------------------------------------------------------*/
   useEffect(() => {
     document.documentElement.classList.toggle("dark", localStorage.getItem("theme") === "dark");
   }, []);
@@ -28,9 +29,9 @@ const Navbar = () => {
     });
   };
 
- 
-  //  *  helper utils
-   
+  /* ------------------------------------------------------------------
+   *  helper utils
+   * ----------------------------------------------------------------*/
   const closeMenus = () => {
     setOpen(false);
     setDashOpen(false);
@@ -40,9 +41,9 @@ const Navbar = () => {
   const normal = "hover:text-blue-500 dark:hover:text-emerald-300";
   const linkCls = ({ isActive }) => (isActive ? active : normal);
 
-  
-  //  *  link groups
-   
+  /* ------------------------------------------------------------------
+   *  link groups
+   * ----------------------------------------------------------------*/
   const desktopLinks = (
     <>
       <li><NavLink to="/" className={linkCls}>Home</NavLink></li>
@@ -92,6 +93,7 @@ const Navbar = () => {
     </>
   );
 
+  /* ------------------------------------------------------------------*/
   return (
     <nav className="backdrop-blur-md bg-slate-300/60 dark:bg-gray-800/60 text-black dark:text-white rounded-lg px-4 sticky top-0 z-50 w-full">
       <div className="max-w-7xl mx-auto flex flex-wrap lg:flex-nowrap items-center justify-between py-2 gap-y-2 ">
@@ -107,7 +109,7 @@ const Navbar = () => {
         </div>
 
         {/* desktop nav */}
-        <ul className="hidden lg:ml-24 lg:flex lg:items-center menu menu-horizontal gap-6 lg:gap-0">{desktopLinks}</ul>
+        <ul className="hidden lg:ml-24 lg:flex menu  gap-6">{desktopLinks}</ul>
 
         {/* right‑side controls */}
         <div className="flex items-center gap-2 ml-auto">

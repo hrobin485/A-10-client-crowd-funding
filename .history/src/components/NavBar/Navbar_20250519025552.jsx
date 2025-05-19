@@ -7,12 +7,13 @@ import { HiMoon, HiSun } from "react-icons/hi";
 const Navbar = () => {
   const [user, setUser] = useState(null);
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("theme") === "dark");
-  const [open, setOpen] = useState(false);          
-  const [dashOpen, setDashOpen] = useState(false);  
+  const [open, setOpen] = useState(false);          // hamburger open/close
+  const [dashOpen, setDashOpen] = useState(false);  // dashboard sub‑menu (mobile only)
   const navigate = useNavigate();
 
-  
-  
+  /* ------------------------------------------------------------------
+   *  theme + auth observers
+   * ----------------------------------------------------------------*/
   useEffect(() => {
     document.documentElement.classList.toggle("dark", localStorage.getItem("theme") === "dark");
   }, []);
@@ -28,21 +29,16 @@ const Navbar = () => {
     });
   };
 
- 
-  //  *  helper utils
-   
-  const closeMenus = () => {
-    setOpen(false);
-    setDashOpen(false);
-  };
-
+  /* ------------------------------------------------------------------
+   *  tailwind helpers
+   * ----------------------------------------------------------------*/
   const active = "text-blue-500 dark:text-emerald-400 font-semibold";
   const normal = "hover:text-blue-500 dark:hover:text-emerald-300";
   const linkCls = ({ isActive }) => (isActive ? active : normal);
 
-  
-  //  *  link groups
-   
+  /* ------------------------------------------------------------------
+   *  link groups
+   * ----------------------------------------------------------------*/
   const desktopLinks = (
     <>
       <li><NavLink to="/" className={linkCls}>Home</NavLink></li>
@@ -65,15 +61,15 @@ const Navbar = () => {
   const dashSub = (
     <ul className="pl-4 flex flex-col gap-2 text-sm">
       {dashRoutes.map(({ to, label }) => (
-        <li key={to}><NavLink to={to} className={linkCls} onClick={closeMenus}>{label}</NavLink></li>
+        <li key={to}><NavLink to={to} className={linkCls}>{label}</NavLink></li>
       ))}
     </ul>
   );
 
   const mobileLinks = (
     <>
-      <li><NavLink to="/" className={linkCls} onClick={closeMenus}>Home</NavLink></li>
-      <li><NavLink to="/AllCampaign" className={linkCls} onClick={closeMenus}>All Campaign</NavLink></li>
+      <li><NavLink to="/" className={linkCls}>Home</NavLink></li>
+      <li><NavLink to="/AllCampaign" className={linkCls}>All Campaign</NavLink></li>
       <li>
         <button
           type="button"
@@ -87,14 +83,15 @@ const Navbar = () => {
         </button>
         {dashOpen && dashSub}
       </li>
-      <li><NavLink to="/AboutUs" className={linkCls} onClick={closeMenus}>About Us</NavLink></li>
-      <li><NavLink to="/ContactUs" className={linkCls} onClick={closeMenus}>Contact Us</NavLink></li>
+      <li><NavLink to="/AboutUs" className={linkCls}>About Us</NavLink></li>
+      <li><NavLink to="/ContactUs" className={linkCls}>Contact Us</NavLink></li>
     </>
   );
 
+  /* ------------------------------------------------------------------*/
   return (
     <nav className="backdrop-blur-md bg-slate-300/60 dark:bg-gray-800/60 text-black dark:text-white rounded-lg px-4 sticky top-0 z-50 w-full">
-      <div className="max-w-7xl mx-auto flex flex-wrap lg:flex-nowrap items-center justify-between py-2 gap-y-2 ">
+      <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between py-2 gap-y-2">
         {/* brand + hamburger */}
         <div className="flex items-center gap-2 flex-shrink-0">
           <button type="button" className="lg:hidden p-2" onClick={() => setOpen(prev => !prev)}>
@@ -107,7 +104,7 @@ const Navbar = () => {
         </div>
 
         {/* desktop nav */}
-        <ul className="hidden lg:ml-24 lg:flex lg:items-center menu menu-horizontal gap-6 lg:gap-0">{desktopLinks}</ul>
+        <ul className="hidden lg:ml-24 lg:flex menu menu-horizontal gap-6">{desktopLinks}</ul>
 
         {/* right‑side controls */}
         <div className="flex items-center gap-2 ml-auto">
@@ -116,18 +113,18 @@ const Navbar = () => {
               <img
                 src={user.photoURL || "https://via.placeholder.com/150"}
                 className="h-8 w-8 rounded-full" referrerPolicy="no-referrer"
-                onClick={() => { closeMenus(); navigate("/Profile"); }}
+                onClick={() => navigate("/Profile")}
               />
               <button
                 type="button"
-                onClick={async () => { await signOut(auth); closeMenus(); navigate("/"); }}
+                onClick={async () => { await signOut(auth); navigate("/"); }}
                 className="bg-slate-300 dark:bg-gray-600 px-3 py-1 rounded text-sm hover:bg-gray-400 dark:hover:bg-gray-500"
               >Log Out</button>
             </>
           ) : (
             <>
-              <NavLink to="/LogIn" className={linkCls} onClick={closeMenus}>LogIn</NavLink>
-              <NavLink to="/Register" className={linkCls} onClick={closeMenus}>Register</NavLink>
+              <NavLink to="/LogIn" className={linkCls}>LogIn</NavLink>
+              <NavLink to="/Register" className={linkCls}>Register</NavLink>
             </>
           )}
           <button type="button" onClick={toggleTheme} className="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
@@ -137,7 +134,7 @@ const Navbar = () => {
 
         {/* mobile dropdown */}
         {open && (
-          <ul className="w-full lg:hidden flex flex-col gap-3 mt-2 max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-400 dark:scrollbar-thumb-slate-600">
+          <ul className="w-full lg:hidden flex flex-col gap-3 mt-2">
             {mobileLinks}
           </ul>
         )}
