@@ -12,7 +12,7 @@ const Profile = () => {
     email: authUser?.email || 'unknown@example.com',
     profileImage:
       authUser?.photoURL ||
-      'Anonymous photoURL',
+      'https://i.pravatar.cc/150?img=47',
 
     // dummy / placeholder
     phone: '+88012XXXXXXXX',

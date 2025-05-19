@@ -12,13 +12,13 @@ const Profile = () => {
     email: authUser?.email || 'unknown@example.com',
     profileImage:
       authUser?.photoURL ||
-      'Anonymous photoURL',
+      'https://i.pravatar.cc/150?img=47',
 
     // dummy / placeholder
-    phone: '+88012XXXXXXXX',
-    address: 'XXX, XXXXX, XXXXX, XXXXXXXX',
-    joinedDate: '20XX-XX-XX',
-    role: 'Creator',
+    phone: '+880123456789',
+    address: '123/A, Gulshan, Dhaka, Bangladesh',
+    joinedDate: '2024-11-15',
+    role: 'Campaign Creator',
   };
 
   return (
