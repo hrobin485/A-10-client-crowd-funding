@@ -4,15 +4,15 @@ import Navbar from "../NavBar/Navbar";
 
 
 const Root = () => {
-  return (
+    return (
     <div className="bg-slate-50 dark:bg-gray-900">
-      <Navbar /> 
-      <div className="w-11/12 mx-auto overflow-hidden">
-        <Outlet />
-      </div>
-      <Footer />
+        <div className="w-11/12  mx-auto ">
+          <Navbar></Navbar>
+          <Outlet></Outlet>
+        </div>
+        <Footer></Footer>
     </div>
-  );
+    );
 };
 
 export default Root;

@@ -107,7 +107,7 @@ const Navbar = () => {
         </div>
 
         {/* desktop nav */}
-        <ul className="hidden lg:ml-44 lg:flex lg:items-center  gap-x-6 lg:gap-6">{desktopLinks}</ul>
+        <ul className="hidden lg:ml-32 lg:flex lg:items-center  gap-x-6 lg:gap-6">{desktopLinks}</ul>
 
         {/* right‑side controls */}
         <div className="flex items-center gap-2 ml-auto">

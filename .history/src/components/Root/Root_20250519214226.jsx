@@ -6,7 +6,7 @@ import Navbar from "../NavBar/Navbar";
 const Root = () => {
   return (
     <div className="bg-slate-50 dark:bg-gray-900">
-      <Navbar /> 
+      <Navbar /> {/* now lives outside the overflow-hidden wrapper */}
       <div className="w-11/12 mx-auto overflow-hidden">
         <Outlet />
       </div>
