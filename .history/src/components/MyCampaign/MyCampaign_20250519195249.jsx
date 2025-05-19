@@ -155,7 +155,7 @@ const MyCampaign = () => {
                   <td className="p-3 border dark:border-gray-600">
                     {new Date(campaign.deadline).toLocaleDateString("en-GB")}
                   </td>
-                  <td className="p-3 border flex gap-3 dark:border-gray-600">
+                  <td className="p-3 border dark:border-gray-600">
                     <button
                       className="px-3 py-1  bg-blue-500 text-white rounded hover:bg-blue-600"
                       onClick={() => navigate(`/UpdateCampaign/${campaign._id}`)}

@@ -61,7 +61,7 @@ export default function Banner() {
 
   return (
     <section className="relative mt-5 rounded-xl bg-gradient-to-br from-blue-100 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      <div className=" px-4 grid md:px-8 lg:px-12 py-16  md:grid-cols-2 gap-8 items-center">
+      <div className="max-w-7xl px-4 grid md:px-8 lg:px-12 py-16  md:grid-cols-2 gap-8 ">
         {/* ───────── left text ───────── */}
         <div className="space-y-6">
           <h1 className="text-4xl font-extrabold text-gray-800 dark:text-white">
